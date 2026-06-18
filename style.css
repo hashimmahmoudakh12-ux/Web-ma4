@@ -989,6 +989,109 @@ ul { list-style: none; }
 }
 
 /* ─────────────────────────────────────────────
+   TEACHER / QURAN SECTION
+───────────────────────────────────────────── */
+.teacher-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 4rem;
+  align-items: start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.teacher-image-wrap {
+  position: relative;
+}
+
+.teacher-image-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border: 1px solid rgba(212,175,55,0.3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.teacher-image-wrap::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: -12px;
+  bottom: -12px;
+  background: rgba(212,175,55,0.07);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.teacher-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  position: relative;
+  z-index: 1;
+  filter: brightness(0.92) contrast(1.05);
+}
+
+.teacher-body {
+  padding-top: 0.5rem;
+}
+
+.teacher-name {
+  font-family: var(--font-arabic);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  color: var(--gold);
+  margin-bottom: 0.15rem;
+  line-height: 1.2;
+}
+
+.teacher-title {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(212,175,55,0.65);
+  margin-bottom: 1.6rem;
+}
+
+.teacher-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.teacher-tag {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(212,175,55,0.35);
+  padding: 0.35rem 0.9rem;
+}
+
+@media (max-width: 820px) {
+  .teacher-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 480px;
+  }
+
+  .teacher-image-wrap::before,
+  .teacher-image-wrap::after {
+    display: none;
+  }
+
+  .teacher-photo {
+    aspect-ratio: 4/5;
+  }
+}
+
+/* ─────────────────────────────────────────────
    CAL.COM EMBED
 ───────────────────────────────────────────── */
 .cal-embed-wrapper {
