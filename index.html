@@ -39,6 +39,7 @@
 
 <!-- ── HERO ───────────────────────────────────── -->
 <section class="hero" aria-label="Hero">
+  <div class="geo-pattern" aria-hidden="true"></div>
   <div class="hero-bg" aria-hidden="true"></div>
 
   <div class="hero-inner">
@@ -67,6 +68,7 @@
 
 <!-- ── OUR STORY ──────────────────────────────── -->
 <section id="story" class="section section-dark" aria-labelledby="story-heading">
+  <div class="geo-pattern-sm" aria-hidden="true"></div>
   <div class="container">
 
     <div class="section-header reveal">
@@ -84,50 +86,35 @@
       <!-- Left: Decorative Art Frame -->
       <div class="story-art reveal reveal-delay-1" aria-hidden="true">
         <div class="story-art-inner">
-          <!-- Na'l al-Nabi — the Prophet's Sandal (peace be upon him) -->
-          <svg class="story-art-frame" viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <g fill="none" stroke="#D4AF37" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Outer sole -->
-              <path d="M 80,12
-                       C 100,12 122,30 126,58
-                       C 132,84 131,114 124,146
-                       C 117,174 103,196 80,203
-                       C 57,196 43,174 36,146
-                       C 29,114 28,84 34,58
-                       C 38,30 60,12 80,12 Z"
-                    stroke-width="1.8" opacity="0.9"/>
-              <!-- Inner sole -->
-              <path d="M 80,22
-                       C 98,22 117,38 120,63
-                       C 125,87 124,115 118,143
-                       C 111,169 99,188 80,194
-                       C 61,188 49,169 42,143
-                       C 36,115 35,87 40,63
-                       C 43,38 62,22 80,22 Z"
-                    stroke-width="0.7" opacity="0.4"/>
-              <!-- Toe loop arch -->
-              <path d="M 63,50 C 63,30 97,30 97,50" stroke-width="1.8" opacity="0.9"/>
-              <!-- Toe loop inner arch -->
-              <path d="M 69,50 C 69,37 91,37 91,50" stroke-width="0.9" opacity="0.5"/>
-              <!-- Small oval ring at toe -->
-              <ellipse cx="80" cy="44" rx="7" ry="5.5" stroke-width="1.2" opacity="0.75"/>
-              <!-- Vertical connector: toe loop to first strap -->
-              <line x1="80" y1="50" x2="80" y2="84" stroke-width="1.6"/>
-              <!-- First strap -->
-              <path d="M 40,84 C 54,76 106,76 120,84" stroke-width="1.8" opacity="0.9"/>
-              <!-- Strap attachment dots -->
-              <circle cx="40"  cy="84" r="3" fill="#D4AF37" opacity="0.75"/>
-              <circle cx="120" cy="84" r="3" fill="#D4AF37" opacity="0.75"/>
-              <!-- Vertical connector: first strap to second strap -->
-              <line x1="80" y1="84" x2="80" y2="116" stroke-width="1.6"/>
-              <!-- Second strap -->
-              <path d="M 37,116 C 52,108 108,108 123,116" stroke-width="1.8" opacity="0.9"/>
-              <!-- Strap attachment dots -->
-              <circle cx="37"  cy="116" r="3" fill="#D4AF37" opacity="0.75"/>
-              <circle cx="123" cy="116" r="3" fill="#D4AF37" opacity="0.75"/>
-              <!-- Decorative centre dot -->
-              <circle cx="80" cy="100" r="2.5" fill="#D4AF37" opacity="0.6"/>
+          <!-- Fanoos (Islamic lantern) with interlocking star lattice -->
+          <svg class="story-art-frame" viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <clipPath id="fanoos-clip">
+                <path d="M80,5 C103,5 134,28 136,66 C138,95 118,106 98,111 C118,116 138,127 136,156 C134,184 103,197 80,197 C57,197 26,184 24,156 C22,127 42,116 62,111 C42,106 22,95 24,66 C26,28 57,5 80,5 Z"/>
+              </clipPath>
+              <pattern id="fanoos-lattice" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <g fill="none" stroke="#D4AF37" stroke-width="0.85">
+                  <polygon points="10,3 11.1,7.3 14.9,5.1 12.7,8.9 17,10 12.7,11.1 14.9,14.9 11.1,12.7 10,17 8.9,12.7 5.1,14.9 7.3,11.1 3,10 7.3,8.9 5.1,5.1 8.9,7.3"/>
+                  <line x1="10" y1="0"  x2="10" y2="3"/>
+                  <line x1="10" y1="17" x2="10" y2="20"/>
+                  <line x1="0"  y1="10" x2="3"  y2="10"/>
+                  <line x1="17" y1="10" x2="20" y2="10"/>
+                  <line x1="14.9" y1="5.1"  x2="20" y2="0"/>
+                  <line x1="14.9" y1="14.9" x2="20" y2="20"/>
+                  <line x1="5.1"  y1="14.9" x2="0"  y2="20"/>
+                  <line x1="5.1"  y1="5.1"  x2="0"  y2="0"/>
+                </g>
+              </pattern>
+            </defs>
+            <!-- Lattice fill clipped to fanoos silhouette -->
+            <g clip-path="url(#fanoos-clip)">
+              <rect width="160" height="200" fill="url(#fanoos-lattice)"/>
             </g>
+            <!-- Fanoos outer border -->
+            <path d="M80,5 C103,5 134,28 136,66 C138,95 118,106 98,111 C118,116 138,127 136,156 C134,184 103,197 80,197 C57,197 26,184 24,156 C22,127 42,116 62,111 C42,106 22,95 24,66 C26,28 57,5 80,5 Z"
+                  fill="none" stroke="#D4AF37" stroke-width="2.2"/>
+            <!-- Waist accent -->
+            <line x1="62" y1="111" x2="98" y2="111" stroke="#D4AF37" stroke-width="1.5" opacity="0.8"/>
           </svg>
 
           <p class="story-art-verse" lang="ar">
@@ -183,6 +170,7 @@
 
 <!-- ── FEATURED VIDEO ─────────────────────────── -->
 <section class="section video-section" aria-labelledby="video-heading">
+  <div class="geo-pattern-sm" aria-hidden="true"></div>
   <div class="container">
 
     <div class="section-header reveal">
@@ -225,6 +213,7 @@
 
 <!-- ── GALLERY ─────────────────────────────────── -->
 <section class="section section-dark" aria-labelledby="gallery-heading">
+  <div class="geo-pattern" aria-hidden="true"></div>
   <div class="container">
 
     <div class="section-header reveal">
@@ -241,6 +230,7 @@
 
       <!-- Card 1 -->
       <article class="gallery-card reveal reveal-delay-1" role="listitem" aria-label="Masajid Events">
+        <div class="geo-pattern-sm" aria-hidden="true"></div>
         <div class="gallery-card-overlay" aria-hidden="true"></div>
         <div class="gallery-card-content">
           <span class="gallery-card-arabic" lang="ar">المساجد</span>
@@ -252,6 +242,7 @@
 
       <!-- Card 2 -->
       <article class="gallery-card reveal reveal-delay-2" role="listitem" aria-label="Mawlid Gatherings">
+        <div class="geo-pattern-sm" aria-hidden="true"></div>
         <div class="gallery-card-overlay" aria-hidden="true"></div>
         <div class="gallery-card-content">
           <span class="gallery-card-arabic" lang="ar">المولد النبوي</span>
@@ -263,6 +254,7 @@
 
       <!-- Card 3 -->
       <article class="gallery-card reveal reveal-delay-3" role="listitem" aria-label="Islamic Weddings">
+        <div class="geo-pattern-sm" aria-hidden="true"></div>
         <div class="gallery-card-overlay" aria-hidden="true"></div>
         <div class="gallery-card-content">
           <span class="gallery-card-arabic" lang="ar">الأعراس الإسلامية</span>
@@ -274,6 +266,7 @@
 
       <!-- Card 4 -->
       <article class="gallery-card reveal reveal-delay-4" role="listitem" aria-label="Fundraisers">
+        <div class="geo-pattern-sm" aria-hidden="true"></div>
         <div class="gallery-card-overlay" aria-hidden="true"></div>
         <div class="gallery-card-content">
           <span class="gallery-card-arabic" lang="ar">جمع التبرعات</span>
@@ -285,6 +278,7 @@
 
       <!-- Card 5 -->
       <article class="gallery-card reveal reveal-delay-5" role="listitem" aria-label="Eid Celebrations">
+        <div class="geo-pattern-sm" aria-hidden="true"></div>
         <div class="gallery-card-overlay" aria-hidden="true"></div>
         <div class="gallery-card-content">
           <span class="gallery-card-arabic" lang="ar">أعياد وبرامج المجتمع</span>
@@ -300,6 +294,7 @@
 
 <!-- ── CTA BANNER ──────────────────────────────── -->
 <section class="cta-banner" aria-labelledby="cta-heading">
+  <div class="geo-pattern" aria-hidden="true"></div>
   <div class="container" style="position:relative;z-index:1;">
     <div class="reveal">
       <p class="arabic-display" lang="ar">هل تريد أن تحجز معنا؟</p>
