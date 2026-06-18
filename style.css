@@ -651,6 +651,27 @@ ul { list-style: none; }
   margin-top: 2rem;
 }
 
+.story-group-photo {
+  position: relative;
+}
+
+.story-group-photo::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border: 1px solid rgba(212,175,55,0.25);
+  pointer-events: none;
+}
+
+.story-group-img {
+  width: 100%;
+  display: block;
+  max-height: 480px;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(0.9) contrast(1.05);
+}
+
 .story-tag {
   font-family: var(--font-ui);
   font-size: 0.65rem;
