@@ -576,6 +576,12 @@ ul { list-style: none; }
   align-items: center;
 }
 
+.story-grid-single {
+  grid-template-columns: 1fr;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
 .story-art {
   position: relative;
   aspect-ratio: 3/4;
