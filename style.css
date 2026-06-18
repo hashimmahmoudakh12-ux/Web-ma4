@@ -605,8 +605,8 @@ ul { list-style: none; }
 }
 
 .story-art-frame {
-  width: 160px;
-  height: 160px;
+  width: 130px;
+  height: auto;
 }
 
 .story-art-verse {
