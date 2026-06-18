@@ -46,24 +46,11 @@ img { display: block; max-width: 100%; }
 ul { list-style: none; }
 
 /* ─────────────────────────────────────────────
-   ISLAMIC GEOMETRIC PATTERN (inline SVG via CSS)
+   GEOMETRIC PATTERNS — removed per design update
 ───────────────────────────────────────────── */
-.geo-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.18'%3E%3Cpolygon points='60,4 74,30 102,30 80,48 88,76 60,58 32,76 40,48 18,30 46,30'/%3E%3Cpolygon points='60,20 70,38 90,38 74,50 80,68 60,56 40,68 46,50 30,38 50,38'/%3E%3Cline x1='60' y1='4' x2='60' y2='116'/%3E%3Cline x1='4' y1='60' x2='116' y2='60'/%3E%3Cline x1='18' y1='18' x2='102' y2='102'/%3E%3Cline x1='102' y1='18' x2='18' y2='102'/%3E%3Ccircle cx='60' cy='60' r='38'/%3E%3Ccircle cx='60' cy='60' r='20'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 120px 120px;
-  pointer-events: none;
-  z-index: 0;
-}
-
+.geo-pattern,
 .geo-pattern-sm {
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='0.4' opacity='0.12'%3E%3Cpolygon points='40,3 50,20 68,20 54,32 59,50 40,39 21,50 26,32 12,20 30,20'/%3E%3Ccircle cx='40' cy='40' r='25'/%3E%3Cline x1='40' y1='3' x2='40' y2='77'/%3E%3Cline x1='3' y1='40' x2='77' y2='40'/%3E%3Cline x1='12' y1='12' x2='68' y2='68'/%3E%3Cline x1='68' y1='12' x2='12' y2='68'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 80px 80px;
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 /* ─────────────────────────────────────────────
@@ -418,15 +405,6 @@ ul { list-style: none; }
   z-index: 1;
 }
 
-.hero .geo-pattern {
-  animation: geo-drift 28s linear infinite;
-  opacity: 0.22;
-}
-
-@keyframes geo-drift {
-  from { background-position: 0 0; }
-  to   { background-position: 120px 120px; }
-}
 
 .hero-inner {
   position: relative;
