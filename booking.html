@@ -53,223 +53,71 @@
   </div>
 </header>
 
-<!-- ── BOOKING SECTION ────────────────────────── -->
-<section class="section section-dark" aria-label="Booking calendar and form">
+<!-- ── CAL.COM BOOKING EMBED ─────────────────── -->
+<section class="section section-dark" aria-label="Booking calendar">
   <div class="geo-pattern-sm" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1;">
 
-  <div class="booking-layout">
-
-    <!-- ── CALENDAR ──────────────────────────── -->
-    <div class="reveal">
-      <div class="calendar-wrapper corner-accent" role="region" aria-label="Availability calendar">
-        <div style="margin-bottom:1.5rem;">
-          <span class="section-eyebrow">Availability</span>
-          <h2 class="section-title" style="font-size:1.3rem;">Select a Date</h2>
-        </div>
-
-        <div class="calendar-header">
-          <button class="calendar-nav-btn calendar-prev" aria-label="Previous month">&#8249;</button>
-          <span class="calendar-month-label" aria-live="polite"></span>
-          <button class="calendar-nav-btn calendar-next" aria-label="Next month">&#8250;</button>
-        </div>
-
-        <div class="calendar-weekdays" aria-hidden="true">
-          <span class="calendar-weekday">Sun</span>
-          <span class="calendar-weekday">Mon</span>
-          <span class="calendar-weekday">Tue</span>
-          <span class="calendar-weekday">Wed</span>
-          <span class="calendar-weekday">Thu</span>
-          <span class="calendar-weekday">Fri</span>
-          <span class="calendar-weekday">Sat</span>
-        </div>
-
-        <div class="calendar-days" role="grid" aria-label="Calendar days">
-          <!-- Populated by script.js -->
-        </div>
-
-        <div class="calendar-legend" aria-label="Calendar legend">
-          <div class="legend-item">
-            <span class="legend-dot available" aria-hidden="true"></span>
-            Available
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot unavailable" aria-hidden="true"></span>
-            Unavailable
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot selected" aria-hidden="true"></span>
-            Selected
-          </div>
-        </div>
+    <div class="section-header reveal" style="margin-bottom:2.5rem;">
+      <span class="section-eyebrow">Live Availability</span>
+      <h2 class="section-title">Select a Date &amp; Time</h2>
+      <div class="gold-divider" aria-hidden="true" style="margin:1.25rem auto;">
+        <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
       </div>
+      <p class="section-subtitle" style="margin:0 auto;text-align:center;">
+        Choose an available date and complete your booking directly below — no redirects, no waiting.
+      </p>
     </div>
 
-    <!-- ── BOOKING FORM ───────────────────────── -->
-    <div class="booking-form-wrapper reveal reveal-delay-2">
-
-      <!-- Shown before a date is selected -->
-      <div class="booking-prompt" aria-live="polite">
-        <span class="arabic-label" lang="ar">اختر تاريخاً</span>
-        <p>Please select an available date on the calendar to begin your booking enquiry.</p>
-      </div>
-
-      <!-- Booking confirmation (shown after submit) -->
-      <div class="booking-confirmation" role="alert" aria-live="assertive">
-        <p class="arabic-display" lang="ar">جزاكم الله خيراً</p>
-        <div class="gold-divider" aria-hidden="true" style="margin:1.25rem auto;">
-          <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
-        </div>
-        <p>
-          May Allah reward you. We have received your booking enquiry and will be in touch within 48 hours, in sha Allah. We look forward to serving your community.
-        </p>
-      </div>
-
-      <!-- The booking form (revealed when a date is selected) -->
-      <!--
-        ── TO CONNECT TO AN EMAIL SERVICE ───────────────────────────────────
-        Option 1 — Formspree:
-          Change this to:  <form id="booking-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          Then uncomment the Formspree block in script.js.
-
-        Option 2 — EmailJS:
-          Keep the form as-is, add the EmailJS CDN script in <head>:
-          <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"><\/script>
-          Then uncomment the emailjs.send() block in script.js.
-
-        Option 3 — Google Forms:
-          Get your prefilled form URL, map the input name attributes to
-          Google's entry.XXXX names, and POST to the Google Forms action URL.
-        ──────────────────────────────────────────────────────────────────── -->
-      <form id="booking-form" class="booking-form" novalidate aria-label="Booking enquiry form">
-
-        <div>
-          <span class="section-eyebrow">Booking Enquiry</span>
-          <span class="booking-selected-date" aria-live="polite"></span>
-          <h2 class="section-title" style="font-size:1.3rem;">Your Details</h2>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="full-name">Full Name <span aria-hidden="true">*</span></label>
-            <input
-              class="form-input"
-              type="text"
-              id="full-name"
-              name="full_name"
-              placeholder="Your full name"
-              required
-              autocomplete="name"
-              aria-required="true"
-            >
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="email">Email Address <span aria-hidden="true">*</span></label>
-            <input
-              class="form-input"
-              type="email"
-              id="email"
-              name="email"
-              placeholder="your@email.com"
-              required
-              autocomplete="email"
-              aria-required="true"
-            >
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="phone">Phone Number</label>
-            <input
-              class="form-input"
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="+1 (000) 000-0000"
-              autocomplete="tel"
-            >
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="event-name">Event Name <span aria-hidden="true">*</span></label>
-            <input
-              class="form-input"
-              type="text"
-              id="event-name"
-              name="event_name"
-              placeholder="e.g. Annual Fundraising Gala"
-              required
-              aria-required="true"
-            >
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="event-type">Event Type <span aria-hidden="true">*</span></label>
-            <select class="form-select" id="event-type" name="event_type" required aria-required="true">
-              <option value="" disabled selected>Select an event type</option>
-              <option value="mawlid">Mawlid Gathering</option>
-              <option value="wedding">Islamic Wedding (Walimah)</option>
-              <option value="fundraiser">Fundraiser / Gala</option>
-              <option value="masjid">Masjid Program</option>
-              <option value="eid">Eid Celebration</option>
-              <option value="community">Community Event</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="attendees">Number of Attendees</label>
-            <select class="form-select" id="attendees" name="attendees">
-              <option value="" disabled selected>Expected attendance</option>
-              <option value="under-50">Under 50</option>
-              <option value="50-150">50 – 150</option>
-              <option value="150-300">150 – 300</option>
-              <option value="300-500">300 – 500</option>
-              <option value="500+">500 or more</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="location">Event Location <span aria-hidden="true">*</span></label>
-          <input
-            class="form-input"
-            type="text"
-            id="location"
-            name="event_location"
-            placeholder="Venue name and city"
-            required
-            aria-required="true"
-          >
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="notes">Additional Notes</label>
-          <textarea
-            class="form-textarea"
-            id="notes"
-            name="notes"
-            placeholder="Any other details about your event, specific nasheed requests, or questions for us..."
-          ></textarea>
-        </div>
-
-        <!-- Hidden field: populated by script.js when date is selected -->
-        <input type="hidden" id="selected-date-field" name="selected_date" value="">
-
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
-          <button type="submit" class="btn-primary" style="flex:1;min-width:180px;text-align:center;">
-            Submit Booking Enquiry
-          </button>
-          <p style="font-family:var(--font-serif);font-size:0.85rem;color:var(--cream-muted);font-style:italic;margin:0;">
-            We will respond within 48 hours, in sha Allah.
-          </p>
-        </div>
-
-      </form>
+    <div class="cal-embed-wrapper reveal reveal-delay-1">
+      <!-- Cal.com inline embed — powered by cal.com/al-maqam-al-mahmoud-w8vtkq -->
+      <div id="cal-booking-embed"></div>
     </div>
 
   </div>
 </section>
+
+<!-- Cal.com embed script -->
+<script type="text/javascript">
+(function (C, A, L) {
+  let p = function (a, ar) { a.q.push(ar); };
+  let d = C.document;
+  C.Cal = C.Cal || function () {
+    let cal = C.Cal; let ar = arguments;
+    if (!cal.loaded) {
+      cal.ns = {}; cal.q = cal.q || [];
+      d.head.appendChild(d.createElement("script")).src = A;
+      cal.loaded = true;
+    }
+    if (ar[0] === L) {
+      const api = function () { p(api, arguments); };
+      const namespace = ar[1];
+      api.q = api.q || [];
+      if (typeof namespace === "string") {
+        cal.ns[namespace] = cal.ns[namespace] || api;
+        p(cal.ns[namespace], ar);
+        p(cal, ["-init-", namespace, window]);
+      } else { p(cal, ar); }
+      return;
+    }
+    p(cal, ar);
+  };
+})(window, "https://app.cal.com/embed/embed.js", "init");
+
+Cal("init", { origin: "https://cal.com" });
+
+Cal("inline", {
+  elementOrSelector: "#cal-booking-embed",
+  calLink: "al-maqam-al-mahmoud-w8vtkq",
+  layout: "month_view"
+});
+
+Cal("ui", {
+  theme: "dark",
+  hideEventTypeDetails: false,
+  layout: "month_view"
+});
+</script>
 
 <!-- ── WHAT TO EXPECT ─────────────────────────── -->
 <section class="section section-mid" aria-labelledby="expect-heading">
@@ -287,8 +135,8 @@
 
       <div class="reveal reveal-delay-1" style="text-align:center;padding:2rem 1.5rem;border:1px solid rgba(212,175,55,0.15);position:relative;">
         <div style="font-family:var(--font-arabic);font-size:2.2rem;color:var(--gold);margin-bottom:1rem;" lang="ar">١</div>
-        <h3 style="font-family:var(--font-display);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream);margin-bottom:0.75rem;">Select a Date</h3>
-        <p style="font-family:var(--font-serif);font-size:0.95rem;color:var(--cream-muted);line-height:1.7;">Choose an available date from the calendar and submit your enquiry with your event details.</p>
+        <h3 style="font-family:var(--font-display);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream);margin-bottom:0.75rem;">Select a Date &amp; Time</h3>
+        <p style="font-family:var(--font-serif);font-size:0.95rem;color:var(--cream-muted);line-height:1.7;">Pick an available date and time directly from the booking calendar above and fill in your event details.</p>
         <div style="position:absolute;top:8px;left:8px;width:16px;height:16px;border-top:1px solid rgba(212,175,55,0.4);border-left:1px solid rgba(212,175,55,0.4);" aria-hidden="true"></div>
         <div style="position:absolute;bottom:8px;right:8px;width:16px;height:16px;border-bottom:1px solid rgba(212,175,55,0.4);border-right:1px solid rgba(212,175,55,0.4);" aria-hidden="true"></div>
       </div>

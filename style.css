@@ -989,8 +989,26 @@ ul { list-style: none; }
 }
 
 /* ─────────────────────────────────────────────
-   BOOKING PAGE
+   CAL.COM EMBED
 ───────────────────────────────────────────── */
+.cal-embed-wrapper {
+  border: 1px solid rgba(212,175,55,0.22);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  background: rgba(7, 31, 23, 0.5);
+}
+
+#cal-booking-embed {
+  width: 100%;
+  min-height: 720px;
+}
+
+@media (max-width: 600px) {
+  #cal-booking-embed {
+    min-height: 900px;
+  }
+}
 .booking-hero {
   background: var(--green-dark);
   padding: 10rem 3rem 5rem;
