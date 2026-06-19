@@ -1016,6 +1016,58 @@ ul { list-style: none; }
 }
 
 /* ─────────────────────────────────────────────
+   SPONSOR SECTION
+───────────────────────────────────────────── */
+.sponsor-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.sponsor-photo-wrap {
+  position: relative;
+}
+
+.sponsor-photo-wrap::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: -12px;
+  bottom: -12px;
+  border: 1px solid rgba(212,175,55,0.2);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sponsor-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(212,175,55,0.28);
+  filter: brightness(0.92) contrast(1.05);
+}
+
+@media (max-width: 820px) {
+  .sponsor-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 440px;
+  }
+
+  .sponsor-photo-wrap::after { display: none; }
+
+  .sponsor-photo { aspect-ratio: 4/5; }
+}
+
+/* ─────────────────────────────────────────────
    HOME CALENDAR
 ───────────────────────────────────────────── */
 .home-cal {
