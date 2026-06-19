@@ -1,7 +1,7 @@
 /* ─────────────────────────────────────────────
    AL MAQAM AL MAHMOUD — Main Script
    Handles: navigation, scroll-reveal, calendar,
-   booking form, contact form
+   booking form, contact form, home calendar
 ───────────────────────────────────────────── */
 
 'use strict';
@@ -288,4 +288,80 @@
     if (formWrapper)  formWrapper.style.display = 'none';
     if (confirmation) confirmation.classList.add('visible');
   }
+})();
+
+/* ─── HOME PAGE CALENDAR ────────────────────── */
+(function initHomeCalendar() {
+  const daysEl   = document.getElementById('home-cal-days');
+  const monthEl  = document.getElementById('home-cal-month');
+  const prevBtn  = document.getElementById('home-cal-prev');
+  const nextBtn  = document.getElementById('home-cal-next');
+  if (!daysEl) return;
+
+  const MONTH_NAMES = ['January','February','March','April','May','June',
+                       'July','August','September','October','November','December'];
+  const today = new Date();
+  const todayY = today.getFullYear();
+  const todayM = today.getMonth();
+  const todayD = today.getDate();
+
+  let viewYear  = todayY;
+  let viewMonth = todayM;
+
+  function render() {
+    monthEl.textContent = MONTH_NAMES[viewMonth] + ' ' + viewYear;
+    daysEl.innerHTML = '';
+
+    const firstWeekday = new Date(viewYear, viewMonth, 1).getDay();
+    const totalDays    = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+    for (let i = 0; i < firstWeekday; i++) {
+      const blank = document.createElement('div');
+      blank.className = 'home-cal-day empty';
+      blank.setAttribute('aria-hidden', 'true');
+      daysEl.appendChild(blank);
+    }
+
+    for (let d = 1; d <= totalDays; d++) {
+      const cell = document.createElement('div');
+      cell.className = 'home-cal-day';
+      cell.textContent = d;
+      cell.setAttribute('role', 'gridcell');
+
+      const isPast = (viewYear < todayY) ||
+                     (viewYear === todayY && viewMonth < todayM) ||
+                     (viewYear === todayY && viewMonth === todayM && d < todayD);
+      const isToday = viewYear === todayY && viewMonth === todayM && d === todayD;
+
+      if (isPast) {
+        cell.classList.add('past');
+        cell.setAttribute('aria-disabled', 'true');
+      } else {
+        if (isToday) cell.classList.add('today');
+        cell.setAttribute('aria-label', MONTH_NAMES[viewMonth] + ' ' + d + ', ' + viewYear + ' — book this date');
+        cell.addEventListener('click', function () {
+          window.location.href = 'booking.html';
+        });
+      }
+
+      daysEl.appendChild(cell);
+    }
+
+    prevBtn.disabled = (viewYear === todayY && viewMonth === todayM);
+    prevBtn.style.opacity = prevBtn.disabled ? '0.3' : '1';
+  }
+
+  prevBtn.addEventListener('click', function () {
+    if (viewMonth === 0) { viewMonth = 11; viewYear--; }
+    else { viewMonth--; }
+    render();
+  });
+
+  nextBtn.addEventListener('click', function () {
+    if (viewMonth === 11) { viewMonth = 0; viewYear++; }
+    else { viewMonth++; }
+    render();
+  });
+
+  render();
 })();
