@@ -7,7 +7,6 @@
   <title>Book Us | Al Maqam Al Mahmoud</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="public/images/favicon.svg">
-  <script src="https://js.stripe.com/v3/" async></script>
 </head>
 <body>
 
@@ -77,40 +76,23 @@
     </div>
 
     <!-- Honorarium -->
-    <div class="reveal" style="margin-top:3.5rem;">
-      <div class="gold-divider" aria-hidden="true" style="margin:0 auto 2.5rem;">
+    <div class="reveal" style="margin-top:3rem;text-align:center;">
+      <div class="gold-divider" aria-hidden="true" style="margin:0 auto 2rem;">
         <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
       </div>
-
-      <div class="honorarium-wrap">
-        <div class="honorarium-corner honorarium-tl" aria-hidden="true"></div>
-        <div class="honorarium-corner honorarium-tr" aria-hidden="true"></div>
-        <div class="honorarium-corner honorarium-bl" aria-hidden="true"></div>
-        <div class="honorarium-corner honorarium-br" aria-hidden="true"></div>
-
-        <p class="honorarium-eyebrow">Support Our Work</p>
-        <h3 class="honorarium-title">Pay Honorarium</h3>
-        <p class="honorarium-amount" id="honorarium-amount">$150.00</p>
-        <p class="honorarium-desc">
-          Once your booking is confirmed, you may submit an honorarium as a gesture of gratitude and support — bārakAllāhu fīkum.
-        </p>
-
-        <!-- Payment form -->
-        <form id="honorarium-form" novalidate>
-          <div id="payment-element" class="honorarium-card-input"></div>
-          <div id="honorarium-error" class="honorarium-error" role="alert" aria-live="assertive"></div>
-          <button type="submit" class="btn-primary honorarium-submit" id="honorarium-submit" style="width:100%;margin-top:1.5rem;">
-            <span id="honorarium-btn-text">Submit Payment</span>
-            <span id="honorarium-spinner" class="honorarium-spinner" aria-hidden="true" style="display:none;"></span>
-          </button>
-        </form>
-
-        <!-- Success state -->
-        <div id="honorarium-success" class="honorarium-success" style="display:none;" role="alert">
-          <p class="honorarium-success-arabic" lang="ar">بارك الله فيكم</p>
-          <p>May Allah bless you. Your honorarium has been received — jazākum Allāhu khayran.</p>
-        </div>
-      </div>
+      <p style="font-family:var(--font-display);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(212,175,55,0.55);margin-bottom:0.6rem;">Support Our Work</p>
+      <p style="font-family:var(--font-serif);font-size:1rem;color:var(--cream-muted);margin-bottom:1.5rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.8;">
+        Once your booking is confirmed, you may submit an honorarium as a gesture of gratitude and support — bārakAllāhu fīkum.
+      </p>
+      <a
+        href="https://buy.stripe.com/00wdRacP66hF2krcwy7kc00"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+        aria-label="Pay honorarium via Stripe"
+      >
+        Pay Honorarium
+      </a>
     </div>
 
   </div>
@@ -257,121 +239,5 @@ Cal("ui", {
   document.getElementById('footer-year').textContent = new Date().getFullYear();
 </script>
 
-<!-- Stripe Honorarium -->
-<script>
-(function () {
-  var stripe, elements;
-
-  function initStripe(publishableKey) {
-    stripe = Stripe(publishableKey);
-    var appearance = {
-      theme: 'night',
-      variables: {
-        colorPrimary: '#D4AF37',
-        colorBackground: '#071F17',
-        colorText: '#F8F3E7',
-        colorTextSecondary: 'rgba(248,243,231,0.6)',
-        colorDanger: '#e07070',
-        fontFamily: '"Cormorant Garamond", Georgia, serif',
-        borderRadius: '0px',
-        spacingUnit: '5px',
-      },
-      rules: {
-        '.Input': {
-          border: '1px solid rgba(212,175,55,0.3)',
-          backgroundColor: 'rgba(7,31,23,0.8)',
-          color: '#F8F3E7',
-          padding: '12px 14px',
-        },
-        '.Input:focus': {
-          border: '1px solid rgba(212,175,55,0.7)',
-          boxShadow: '0 0 0 1px rgba(212,175,55,0.2)',
-        },
-        '.Label': {
-          color: 'rgba(212,175,55,0.65)',
-          fontFamily: '"Cinzel", "Trajan Pro", serif',
-          fontSize: '0.68rem',
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
-          marginBottom: '6px',
-        },
-        '.Error': { color: '#e07070' },
-      },
-    };
-
-    elements = stripe.elements({ appearance: appearance, clientSecret: window._honorariumSecret });
-
-    var paymentElement = elements.create('payment');
-    paymentElement.mount('#payment-element');
-  }
-
-  function setLoading(loading) {
-    var btn  = document.getElementById('honorarium-submit');
-    var text = document.getElementById('honorarium-btn-text');
-    var spin = document.getElementById('honorarium-spinner');
-    btn.disabled = loading;
-    text.style.display = loading ? 'none' : 'inline';
-    spin.style.display = loading ? 'inline-block' : 'none';
-  }
-
-  function showError(msg) {
-    var el = document.getElementById('honorarium-error');
-    el.textContent = msg;
-    el.style.display = msg ? 'block' : 'none';
-  }
-
-  // Fetch payment intent once Stripe.js is ready
-  var STRIPE_PUBLISHABLE_KEY = 'pk_live_51TjXgaIEagXrrozs9Y4b8obs6iglPSywk4AhQTk54KgPCbbBFk3LIPP0PoCHhOufqVR4vRMoMfTvd24YGTK0UmIP00nQEZDlsD';
-
-  function waitForStripeAndInit() {
-    if (typeof Stripe === 'undefined') {
-      setTimeout(waitForStripeAndInit, 100);
-      return;
-    }
-    fetch('/api/create-payment-intent', { method: 'POST' })
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        if (data.error) { showError(data.error); return; }
-        window._honorariumSecret = data.clientSecret;
-        if (data.amount) {
-          document.getElementById('honorarium-amount').textContent =
-            '$' + (data.amount / 100).toFixed(2);
-        }
-        initStripe(data.publishableKey || STRIPE_PUBLISHABLE_KEY);
-      })
-      .catch(function (err) { showError('Could not load payment form. Please try again.'); });
-  }
-
-  document.addEventListener('DOMContentLoaded', waitForStripeAndInit);
-
-  document.getElementById('honorarium-form').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    showError('');
-    setLoading(true);
-
-    var result = await stripe.confirmPayment({
-      elements: elements,
-      confirmParams: { return_url: window.location.href + '?honorarium=paid' },
-      redirect: 'if_required',
-    });
-
-    if (result.error) {
-      showError(result.error.message);
-      setLoading(false);
-    } else {
-      document.getElementById('honorarium-form').style.display = 'none';
-      document.getElementById('honorarium-success').style.display = 'block';
-    }
-  });
-
-  // Show success if redirected back after 3DS
-  if (window.location.search.includes('honorarium=paid')) {
-    document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('honorarium-form').style.display = 'none';
-      document.getElementById('honorarium-success').style.display = 'block';
-    });
-  }
-})();
-</script>
 </body>
 </html>
