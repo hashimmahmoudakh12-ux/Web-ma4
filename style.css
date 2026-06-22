@@ -1063,6 +1063,121 @@ ul { list-style: none; }
 }
 
 /* ─────────────────────────────────────────────
+   HONORARIUM PAYMENT FORM
+───────────────────────────────────────────── */
+.honorarium-wrap {
+  max-width: 520px;
+  margin: 0 auto;
+  background: rgba(7,31,23,0.7);
+  border: 1px solid rgba(212,175,55,0.22);
+  padding: 2.5rem 2rem;
+  position: relative;
+}
+
+.honorarium-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+.honorarium-tl { top: 6px; left: 6px; border-top: 1px solid rgba(212,175,55,0.5); border-left: 1px solid rgba(212,175,55,0.5); }
+.honorarium-tr { top: 6px; right: 6px; border-top: 1px solid rgba(212,175,55,0.5); border-right: 1px solid rgba(212,175,55,0.5); }
+.honorarium-bl { bottom: 6px; left: 6px; border-bottom: 1px solid rgba(212,175,55,0.5); border-left: 1px solid rgba(212,175,55,0.5); }
+.honorarium-br { bottom: 6px; right: 6px; border-bottom: 1px solid rgba(212,175,55,0.5); border-right: 1px solid rgba(212,175,55,0.5); }
+
+.honorarium-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(212,175,55,0.55);
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+
+.honorarium-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.honorarium-amount {
+  font-family: var(--font-arabic);
+  font-size: 2.2rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+}
+
+.honorarium-desc {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--cream-muted);
+  text-align: center;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.honorarium-card-input {
+  min-height: 44px;
+}
+
+.honorarium-error {
+  display: none;
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  color: #e07070;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.honorarium-submit {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.honorarium-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(7,31,23,0.3);
+  border-top-color: var(--green-dark);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.honorarium-success {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.honorarium-success-arabic {
+  font-family: var(--font-arabic);
+  font-size: 2rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  direction: rtl;
+}
+
+.honorarium-success p:last-child {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--cream-muted);
+  line-height: 1.8;
+}
+
+/* ─────────────────────────────────────────────
    HOME CALENDAR
 ───────────────────────────────────────────── */
 .home-cal {
