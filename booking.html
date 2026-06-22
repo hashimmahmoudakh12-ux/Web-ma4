@@ -321,6 +321,8 @@ Cal("ui", {
   }
 
   // Fetch payment intent once Stripe.js is ready
+  var STRIPE_PUBLISHABLE_KEY = 'pk_live_51TjXgaIEagXrrozs9Y4b8obs6iglPSywk4AhQTk54KgPCbbBFk3LIPP0PoCHhOufqVR4vRMoMfTvd24YGTK0UmIP00nQEZDlsD';
+
   function waitForStripeAndInit() {
     if (typeof Stripe === 'undefined') {
       setTimeout(waitForStripeAndInit, 100);
@@ -335,7 +337,7 @@ Cal("ui", {
           document.getElementById('honorarium-amount').textContent =
             '$' + (data.amount / 100).toFixed(2);
         }
-        initStripe(data.publishableKey);
+        initStripe(data.publishableKey || STRIPE_PUBLISHABLE_KEY);
       })
       .catch(function (err) { showError('Could not load payment form. Please try again.'); });
   }
