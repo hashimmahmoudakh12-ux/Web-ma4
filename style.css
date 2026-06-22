@@ -671,11 +671,9 @@ ul { list-style: none; }
 
 .story-group-img {
   width: 100%;
+  height: auto;
   display: block;
-  max-height: 480px;
-  object-fit: cover;
-  object-position: center top;
-  filter: brightness(0.9) contrast(1.05);
+  filter: brightness(0.95) contrast(1.02);
 }
 
 .story-tag {
