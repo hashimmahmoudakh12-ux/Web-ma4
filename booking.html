@@ -56,13 +56,6 @@
   </div>
 </header>
 
-<!-- ── SECTION NAV ────────────────────────────── -->
-<div class="booking-section-nav" role="navigation" aria-label="Jump to session type">
-  <a href="#paid-session" class="booking-section-nav-link active">Paid Session</a>
-  <span class="booking-section-nav-divider" aria-hidden="true">&#x25C6;</span>
-  <a href="#sponsored-event" class="booking-section-nav-link">Sponsored Event</a>
-</div>
-
 <!-- ════════════════════════════════════════════
      PAID SESSION
 ═════════════════════════════════════════════ -->
@@ -71,18 +64,44 @@
   <div class="container" style="position:relative;z-index:1;">
 
     <div class="section-header reveal">
-      <span class="booking-type-badge">Paid Session</span>
-      <h2 class="section-title" id="paid-heading" style="margin-top:1.25rem;">Standard Booking</h2>
+      <span class="section-eyebrow">Standard Booking</span>
+      <h2 class="section-title" id="paid-heading">Paid Session</h2>
       <div class="gold-divider" aria-hidden="true">
         <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
       </div>
-      <p class="section-subtitle" style="margin:0 auto;text-align:center;">
-        For weddings, mawlids, Eid gatherings, fundraisers, and private events. An honorarium is required after confirmation.
+      <p class="section-subtitle" style="margin:0 auto 2.5rem;text-align:center;">
+        For weddings, mawlids, Eid gatherings, fundraisers, and private events. An honorarium is required to fully secure your date.
       </p>
     </div>
 
-    <div class="cal-embed-wrapper reveal reveal-delay-1" style="margin-top:2.5rem;">
-      <div id="cal-paid-embed"></div>
+    <div class="booking-cta-card reveal reveal-delay-1">
+      <span class="btc-corner btc-tl" aria-hidden="true"></span>
+      <span class="btc-corner btc-br" aria-hidden="true"></span>
+
+      <div class="booking-cta-meta">
+        <span class="booking-type-badge">Paid Session</span>
+        <div class="booking-option-meta" style="margin:1.5rem 0;">
+          <span>For private events, weddings &amp; mawlids</span>
+          <span>Honorarium required to confirm your date</span>
+          <span>Stripe payment collected after booking</span>
+        </div>
+      </div>
+
+      <div class="booking-cta-action">
+        <p style="font-family:var(--font-arabic);font-size:1.8rem;color:var(--gold);margin-bottom:0.5rem;direction:rtl;" lang="ar">بارك الله فيك</p>
+        <p style="font-family:var(--font-serif);font-size:0.95rem;color:var(--cream-muted);line-height:1.75;margin-bottom:1.75rem;">
+          Click below to open the live calendar and select your preferred date and time.
+        </p>
+        <button
+          class="btn-primary"
+          data-cal-link="al-maqam-al-mahmoud-w8vtkq/payed-event"
+          data-cal-namespace="paid"
+          data-cal-config='{"layout":"month_view","theme":"dark"}'
+          aria-label="Open calendar to book a paid session"
+        >
+          Select a Date &amp; Time
+        </button>
+      </div>
     </div>
 
   </div>
@@ -95,18 +114,44 @@
   <div class="container">
 
     <div class="section-header reveal">
-      <span class="booking-type-badge badge-sponsored">Sponsored</span>
-      <h2 class="section-title" id="sponsored-heading" style="margin-top:1.25rem;">Community &amp; Masjid</h2>
+      <span class="section-eyebrow">Community &amp; Masjid</span>
+      <h2 class="section-title" id="sponsored-heading">Sponsored Event</h2>
       <div class="gold-divider" aria-hidden="true">
         <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
       </div>
-      <p class="section-subtitle" style="margin:0 auto;text-align:center;">
+      <p class="section-subtitle" style="margin:0 auto 2.5rem;text-align:center;">
         For masajid, Islamic schools, and community organisations. We are honoured to serve on a sponsored basis — no payment required, subject to availability.
       </p>
     </div>
 
-    <div class="cal-embed-wrapper reveal reveal-delay-1" style="margin-top:2.5rem;">
-      <div id="cal-sponsored-embed"></div>
+    <div class="booking-cta-card reveal reveal-delay-1" style="border-color:rgba(212,175,55,0.18);">
+      <span class="btc-corner btc-tl" aria-hidden="true"></span>
+      <span class="btc-corner btc-br" aria-hidden="true"></span>
+
+      <div class="booking-cta-meta">
+        <span class="booking-type-badge badge-sponsored">Sponsored</span>
+        <div class="booking-option-meta" style="margin:1.5rem 0;">
+          <span>For masajid, Islamic schools &amp; communities</span>
+          <span>No payment required</span>
+          <span>Subject to availability</span>
+        </div>
+      </div>
+
+      <div class="booking-cta-action">
+        <p style="font-family:var(--font-arabic);font-size:1.8rem;color:var(--gold);margin-bottom:0.5rem;direction:rtl;" lang="ar">جزاك الله خيراً</p>
+        <p style="font-family:var(--font-serif);font-size:0.95rem;color:var(--cream-muted);line-height:1.75;margin-bottom:1.75rem;">
+          Click below to open the live calendar and select your preferred date and time.
+        </p>
+        <button
+          class="btn-outline"
+          data-cal-link="al-maqam-al-mahmoud-w8vtkq/sponsored-event"
+          data-cal-namespace="sponsored"
+          data-cal-config='{"layout":"month_view","theme":"dark"}'
+          aria-label="Open calendar to book a sponsored event"
+        >
+          Select a Date &amp; Time
+        </button>
+      </div>
     </div>
 
   </div>
@@ -167,22 +212,9 @@
 <script src="script.js"></script>
 <script>
   document.getElementById('footer-year').textContent = new Date().getFullYear();
-
-  // Section nav active state on scroll
-  (function () {
-    var links = document.querySelectorAll('.booking-section-nav-link');
-    var sections = [document.getElementById('paid-session'), document.getElementById('sponsored-event')];
-    function onScroll() {
-      var scrollY = window.scrollY + 120;
-      var active = 0;
-      sections.forEach(function (s, i) { if (s && s.offsetTop <= scrollY) active = i; });
-      links.forEach(function (l, i) { l.classList.toggle('active', i === active); });
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-  })();
 </script>
 
-<!-- ── CAL.COM EMBEDS ──────────────────────────── -->
+<!-- ── CAL.COM POPUP EMBED ────────────────────── -->
 <script type="text/javascript">
 (function (C, A, L) {
   let p = function (a, ar) { a.q.push(ar); };
@@ -211,11 +243,6 @@
 
 /* ── Paid session ── */
 Cal("init", "paid", { origin: "https://cal.com" });
-Cal.ns.paid("inline", {
-  elementOrSelector: "#cal-paid-embed",
-  calLink: "al-maqam-al-mahmoud-w8vtkq/payed-event",
-  layout: "month_view"
-});
 Cal.ns.paid("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
 Cal.ns.paid("on", {
   action: "bookingSuccessful",
@@ -227,11 +254,6 @@ Cal.ns.paid("on", {
 
 /* ── Sponsored event ── */
 Cal("init", "sponsored", { origin: "https://cal.com" });
-Cal.ns.sponsored("inline", {
-  elementOrSelector: "#cal-sponsored-embed",
-  calLink: "al-maqam-al-mahmoud-w8vtkq/sponsored-event",
-  layout: "month_view"
-});
 Cal.ns.sponsored("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
 Cal.ns.sponsored("on", {
   action: "bookingSuccessful",

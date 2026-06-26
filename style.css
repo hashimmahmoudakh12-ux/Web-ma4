@@ -1426,6 +1426,28 @@ ul { list-style: none; }
   margin-bottom: 2rem;
 }
 
+/* Booking CTA card (two-column: meta left, action right) */
+.booking-cta-card {
+  border: 1px solid rgba(212,175,55,0.25);
+  padding: 3rem 2.5rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 860px;
+  margin: 0 auto;
+  background: rgba(212,175,55,0.02);
+}
+.booking-cta-action { text-align: center; }
+@media (max-width: 640px) {
+  .booking-cta-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+}
+
 /* Booking option cards (non-interactive container with button inside) */
 .booking-option-card {
   border: 1px solid rgba(212,175,55,0.2);
