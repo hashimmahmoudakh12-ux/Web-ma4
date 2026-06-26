@@ -232,11 +232,9 @@ function selectBookingType(type) {
   // Lazy-init the embed on first selection of this type
   if (!calInited[type]) {
     calInited[type] = true;
-    // IMPORTANT: Replace the slug below with your actual Cal.com event type slug.
-    // Create two event types in Cal.com dashboard, then update these calLink values.
     var slug = type === 'paid'
-      ? 'al-maqam-al-mahmoud-w8vtkq/paid-session'       // ← replace with your paid event slug
-      : 'al-maqam-al-mahmoud-w8vtkq/sponsored-session'; // ← replace with your sponsored event slug
+      ? 'al-maqam-al-mahmoud-w8vtkq/event'
+      : 'al-maqam-al-mahmoud-w8vtkq/sponsored-event';
 
     Cal.ns[type]("inline", {
       elementOrSelector: "#cal-embed-" + type,
