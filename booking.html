@@ -110,7 +110,7 @@
 
     <!-- ── Inline calendar (revealed on button click) ── -->
     <div id="cal-section" style="display:none;margin-top:3rem;">
-      <div class="booking-cal-label" id="booking-cal-label" aria-live="polite">
+      <div class="booking-cal-label" aria-live="polite">
         <span class="booking-cal-badge" id="booking-cal-badge">Paid Session</span>
         <span class="booking-cal-label-text" id="booking-cal-label-text"></span>
         <button class="booking-cal-label-change" onclick="document.getElementById('cal-section').style.display='none'" aria-label="Close calendar">
@@ -118,15 +118,14 @@
         </button>
       </div>
       <div class="cal-embed-wrapper">
-        <div id="cal-embed-paid"></div>
-        <div id="cal-embed-sponsored" style="display:none;"></div>
+        <div id="cal-booking-embed"></div>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- Cal.com inline embed script -->
+<!-- Cal.com embed script -->
 <script type="text/javascript">
 (function (C, A, L) {
   let p = function (a, ar) { a.q.push(ar); };
@@ -153,67 +152,53 @@
   };
 })(window, "https://app.cal.com/embed/embed.js", "init");
 
-Cal("init", "paid",      { origin: "https://cal.com" });
-Cal("init", "sponsored", { origin: "https://cal.com" });
+Cal("init", { origin: "https://cal.com" });
 
-// After paid booking → Stripe honorarium page
-Cal.ns.paid("on", {
+var activeType = null;
+
+Cal("on", {
   action: "bookingSuccessful",
   callback: function(e) {
     var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
-    window.location.href = 'booking-paid-confirm.html' + (uid ? '?uid=' + uid : '');
+    var qs  = uid ? '?uid=' + uid : '';
+    window.location.href = activeType === 'paid'
+      ? 'booking-paid-confirm.html' + qs
+      : 'booking-sponsored-confirm.html' + qs;
   }
 });
-
-// After sponsored booking → thank-you confirmation page
-Cal.ns.sponsored("on", {
-  action: "bookingSuccessful",
-  callback: function(e) {
-    var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
-    window.location.href = 'booking-sponsored-confirm.html' + (uid ? '?uid=' + uid : '');
-  }
-});
-
-var calInited = { paid: false, sponsored: false };
 
 function showCalendar(type) {
+  activeType = type;
   var isPaid = type === 'paid';
 
   // Update label strip
-  document.getElementById('booking-cal-badge').textContent = isPaid ? 'Paid Session' : 'Sponsored';
-  document.getElementById('booking-cal-badge').className   = 'booking-cal-badge' + (isPaid ? '' : ' badge-sponsored');
+  var badge = document.getElementById('booking-cal-badge');
+  badge.textContent = isPaid ? 'Paid Session' : 'Sponsored';
+  badge.className   = 'booking-cal-badge' + (isPaid ? '' : ' badge-sponsored');
   document.getElementById('booking-cal-label-text').textContent = isPaid
     ? 'You are booking a standard paid session. An honorarium is required after confirmation.'
     : 'You are booking a sponsored community session. No payment is required.';
 
-  // Show correct embed div, hide other
-  document.getElementById('cal-embed-paid').style.display      = isPaid ? 'block' : 'none';
-  document.getElementById('cal-embed-sponsored').style.display = isPaid ? 'none'  : 'block';
+  // Reset embed div so Cal.com loads fresh
+  document.getElementById('cal-booking-embed').innerHTML = '';
 
-  // Show the calendar section
+  // Show section
   document.getElementById('cal-section').style.display = 'block';
 
-  // Lazy-init inline embed on first use
-  if (!calInited[type]) {
-    calInited[type] = true;
-    Cal.ns[type]("inline", {
-      elementOrSelector: "#cal-embed-" + type,
-      calLink: isPaid
-        ? "al-maqam-al-mahmoud-w8vtkq/paid-session"
-        : "al-maqam-al-mahmoud-w8vtkq/sponsored-event",
-      layout: "month_view"
-    });
-    Cal.ns[type]("ui", {
-      theme: "dark",
-      hideEventTypeDetails: false,
-      layout: "month_view"
-    });
-  }
+  // Init inline embed with the correct event type
+  Cal("inline", {
+    elementOrSelector: "#cal-booking-embed",
+    calLink: isPaid
+      ? "al-maqam-al-mahmoud-w8vtkq/paid-session"
+      : "al-maqam-al-mahmoud-w8vtkq/sponsored-event",
+    layout: "month_view"
+  });
+  Cal("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
 
   // Scroll to calendar
   setTimeout(function() {
     document.getElementById('cal-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 100);
+  }, 150);
 }
 </script>
 
