@@ -1878,6 +1878,7 @@ ul { list-style: none; }
 
 #cal-paid-embed,
 #cal-sponsored-embed,
+#cal-quran-embed,
 #cal-booking-embed {
   width: 100%;
   min-height: 720px;
@@ -1886,6 +1887,7 @@ ul { list-style: none; }
 @media (max-width: 600px) {
   #cal-paid-embed,
   #cal-sponsored-embed,
+  #cal-quran-embed,
   #cal-booking-embed {
     min-height: 900px;
   }
