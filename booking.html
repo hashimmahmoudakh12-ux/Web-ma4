@@ -84,7 +84,7 @@
           <span>Honorarium Required</span>
           <span>Stripe Payment After Confirmation</span>
         </div>
-        <a href="booking.html?type=paid" class="btn-primary" style="text-align:center;">Book a Paid Session</a>
+        <a href="booking-paid.html" class="btn-primary" style="text-align:center;">Book a Paid Session</a>
       </div>
 
       <div class="booking-option-card reveal reveal-delay-2">
@@ -97,113 +97,13 @@
           <span>No Payment Required</span>
           <span>Subject to Availability</span>
         </div>
-        <a href="booking.html?type=sponsored" class="btn-outline" style="text-align:center;">Book a Sponsored Event</a>
+        <a href="booking-sponsored.html" class="btn-outline" style="text-align:center;">Book a Sponsored Event</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ── CAL.COM EMBED (shown after type is chosen) ── -->
-<section class="section section-dark" id="section-calendar" style="display:none;" aria-label="Booking calendar">
-  <div class="geo-pattern-sm" aria-hidden="true"></div>
-  <div class="container" style="position:relative;z-index:1;">
-
-    <div class="section-header" style="margin-bottom:2rem;">
-      <span class="section-eyebrow" id="cal-eyebrow">Paid Session</span>
-      <h2 class="section-title">Select a Date &amp; Time</h2>
-      <div class="gold-divider" aria-hidden="true" style="margin:1.25rem auto;">
-        <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
-      </div>
-      <p class="section-subtitle" style="margin:0 auto;text-align:center;" id="cal-subtitle"></p>
-    </div>
-
-    <div class="booking-cal-label" style="margin-bottom:2rem;">
-      <span class="booking-cal-badge" id="booking-cal-badge">Paid Session</span>
-      <span class="booking-cal-label-text" id="booking-cal-label-text"></span>
-      <a href="booking.html" class="booking-cal-label-change">&#x2190; Change</a>
-    </div>
-
-    <div class="cal-embed-wrapper">
-      <div id="cal-booking-embed"></div>
-    </div>
-
-  </div>
-</section>
-
-<script type="text/javascript">
-// Read ?type= from URL
-var bookingType = new URLSearchParams(window.location.search).get('type');
-
-if (bookingType === 'paid' || bookingType === 'sponsored') {
-  var isPaid = bookingType === 'paid';
-
-  // Hide type selector, show calendar section
-  document.getElementById('section-choose').style.display   = 'none';
-  document.getElementById('section-calendar').style.display = 'block';
-
-  // Update labels
-  document.getElementById('cal-eyebrow').textContent        = isPaid ? 'Paid Session' : 'Sponsored Event';
-  document.getElementById('cal-subtitle').textContent       = isPaid
-    ? 'You are booking a standard paid session. An honorarium payment will be required after confirmation.'
-    : 'You are booking a sponsored community session. No payment is required.';
-  var badge = document.getElementById('booking-cal-badge');
-  badge.textContent = isPaid ? 'Paid Session' : 'Sponsored';
-  badge.className   = 'booking-cal-badge' + (isPaid ? '' : ' badge-sponsored');
-  document.getElementById('booking-cal-label-text').textContent = isPaid
-    ? 'Standard booking — honorarium required after confirmation.'
-    : 'Sponsored community session — no payment required.';
-
-  // Init Cal.com
-  (function (C, A, L) {
-    let p = function (a, ar) { a.q.push(ar); };
-    let d = C.document;
-    C.Cal = C.Cal || function () {
-      let cal = C.Cal; let ar = arguments;
-      if (!cal.loaded) {
-        cal.ns = {}; cal.q = cal.q || [];
-        d.head.appendChild(d.createElement("script")).src = A;
-        cal.loaded = true;
-      }
-      if (ar[0] === L) {
-        const api = function () { p(api, arguments); };
-        const namespace = ar[1];
-        api.q = api.q || [];
-        if (typeof namespace === "string") {
-          cal.ns[namespace] = cal.ns[namespace] || api;
-          p(cal.ns[namespace], ar);
-          p(cal, ["-init-", namespace, window]);
-        } else { p(cal, ar); }
-        return;
-      }
-      p(cal, ar);
-    };
-  })(window, "https://app.cal.com/embed/embed.js", "init");
-
-  Cal("init", { origin: "https://cal.com" });
-
-  Cal("inline", {
-    elementOrSelector: "#cal-booking-embed",
-    calLink: isPaid
-      ? "al-maqam-al-mahmoud-w8vtkq/paid-session"
-      : "al-maqam-al-mahmoud-w8vtkq/sponsored-event",
-    layout: "month_view"
-  });
-
-  Cal("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
-
-  Cal("on", {
-    action: "bookingSuccessful",
-    callback: function(e) {
-      var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
-      var qs  = uid ? '?uid=' + uid : '';
-      window.location.href = isPaid
-        ? 'booking-paid-confirm.html' + qs
-        : 'booking-sponsored-confirm.html' + qs;
-    }
-  });
-}
-</script>
 
 <!-- ── WHAT TO EXPECT ─────────────────────────── -->
 <section class="section section-mid" aria-labelledby="expect-heading">
