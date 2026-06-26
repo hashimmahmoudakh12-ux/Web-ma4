@@ -51,107 +51,78 @@
       <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
     </div>
     <p class="section-subtitle reveal reveal-delay-4" style="margin:0 auto;text-align:center;">
-      Choose a session type below, then select a date — we will respond within 48 hours, in sha Allah.
+      Choose a session type below and click to book — we will respond within 48 hours, in sha Allah.
     </p>
   </div>
 </header>
 
-<!-- ── SESSION TYPE SELECTOR ─────────────────── -->
-<section class="section section-dark" aria-labelledby="session-type-heading">
+<!-- ── BOOKING OPTIONS ────────────────────────── -->
+<section class="section section-dark" aria-labelledby="booking-options-heading">
   <div class="geo-pattern-sm" aria-hidden="true"></div>
   <div class="container" style="position:relative;z-index:1;">
 
     <div class="section-header reveal">
-      <span class="section-eyebrow">Step 1</span>
-      <h2 class="section-title" id="session-type-heading">Choose a Session Type</h2>
+      <span class="section-eyebrow">Live Availability</span>
+      <h2 class="section-title" id="booking-options-heading">Select a Session Type</h2>
       <div class="gold-divider" aria-hidden="true">
         <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
       </div>
       <p class="section-subtitle" style="margin:0 auto;text-align:center;">
-        Select whether you are booking a paid session or a sponsored community session. Both are confirmed through Cal.com.
+        Click the button on the option that applies to you — a calendar will open to select your date and time.
       </p>
     </div>
 
-    <div class="booking-type-grid" role="group" aria-label="Session type selection">
+    <div class="booking-type-grid" style="max-width:820px;margin:2.5rem auto 0;">
 
-      <!-- Paid Session -->
-      <button
-        class="booking-type-card reveal reveal-delay-1"
-        id="select-paid"
-        onclick="selectBookingType('paid')"
-        aria-pressed="false"
-        aria-label="Select paid session"
-      >
+      <!-- ── Paid Session ── -->
+      <div class="booking-option-card reveal reveal-delay-1" aria-label="Paid session booking option">
         <span class="btc-corner btc-tl" aria-hidden="true"></span>
         <span class="btc-corner btc-br" aria-hidden="true"></span>
         <span class="booking-type-badge">Paid Session</span>
         <h3>Standard Booking</h3>
-        <p>Book Al Maqam Al Mahmoud for your event — weddings, mawlids, fundraisers, Eid gatherings, and more. An honorarium is required to confirm your date.</p>
-        <div class="booking-type-footer">
+        <p>For weddings, mawlids, Eid gatherings, fundraisers, and private events. An honorarium is required to fully confirm your date.</p>
+        <div class="booking-option-meta" aria-label="Paid session details">
           <span>Honorarium Required</span>
-          <span class="booking-type-arrow" aria-hidden="true">&#x2192;</span>
+          <span>Stripe Payment After Confirmation</span>
         </div>
-      </button>
+        <button
+          class="btn-primary"
+          data-cal-link="al-maqam-al-mahmoud-w8vtkq/paid-session"
+          data-cal-namespace="paid"
+          data-cal-config='{"layout":"month_view","theme":"dark"}'
+          aria-label="Open calendar to book a paid session"
+        >
+          Book a Paid Session
+        </button>
+      </div>
 
-      <!-- Sponsored Session -->
-      <button
-        class="booking-type-card reveal reveal-delay-2"
-        id="select-sponsored"
-        onclick="selectBookingType('sponsored')"
-        aria-pressed="false"
-        aria-label="Select sponsored session"
-      >
+      <!-- ── Sponsored Event ── -->
+      <div class="booking-option-card reveal reveal-delay-2" aria-label="Sponsored event booking option">
         <span class="btc-corner btc-tl" aria-hidden="true"></span>
         <span class="btc-corner btc-br" aria-hidden="true"></span>
         <span class="booking-type-badge badge-sponsored">Sponsored</span>
         <h3>Community &amp; Masjid</h3>
-        <p>We are honoured to serve masajid, Islamic schools, and community organisations on a sponsored basis, subject to availability. No payment is required.</p>
-        <div class="booking-type-footer">
+        <p>For masajid, Islamic schools, and community organisations. We are honoured to serve on a sponsored basis, subject to availability.</p>
+        <div class="booking-option-meta" aria-label="Sponsored event details">
           <span>No Payment Required</span>
-          <span class="booking-type-arrow" aria-hidden="true">&#x2192;</span>
+          <span>Subject to Availability</span>
         </div>
-      </button>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── CAL.COM BOOKING CALENDAR ───────────────── -->
-<section class="section section-dark" id="booking-calendar-section" aria-label="Booking calendar">
-  <div class="geo-pattern-sm" aria-hidden="true"></div>
-  <div class="container" style="position:relative;z-index:1;">
-
-    <div class="section-header" style="margin-bottom:2rem;">
-      <span class="section-eyebrow">Step 2</span>
-      <h2 class="section-title">Select a Date &amp; Time</h2>
-      <div class="gold-divider" aria-hidden="true" style="margin:1.25rem auto;">
-        <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
+        <button
+          class="btn-outline"
+          data-cal-link="al-maqam-al-mahmoud-w8vtkq/sponsored-event"
+          data-cal-namespace="sponsored"
+          data-cal-config='{"layout":"month_view","theme":"dark"}'
+          aria-label="Open calendar to book a sponsored event"
+        >
+          Book a Sponsored Event
+        </button>
       </div>
-    </div>
 
-    <!-- Active type label -->
-    <div class="booking-cal-label" id="booking-cal-label" aria-live="polite">
-      <span class="booking-cal-badge" id="booking-cal-badge">Paid Session</span>
-      <span class="booking-cal-label-text" id="booking-cal-label-text">You are booking a standard paid session.</span>
-      <button class="booking-cal-label-change" onclick="scrollToTypeSelector()" aria-label="Change session type">
-        Change &#x2191;
-      </button>
     </div>
-
-    <!-- Paid embed -->
-    <div class="cal-embed-wrapper" id="cal-wrap-paid" style="display:none;">
-      <div id="cal-embed-paid"></div>
-    </div>
-
-    <!-- Sponsored embed -->
-    <div class="cal-embed-wrapper" id="cal-wrap-sponsored" style="display:none;">
-      <div id="cal-embed-sponsored"></div>
-    </div>
-
   </div>
 </section>
 
-<!-- Cal.com embed script -->
+<!-- Cal.com popup embed script -->
 <script type="text/javascript">
 (function (C, A, L) {
   let p = function (a, ar) { a.q.push(ar); };
@@ -178,14 +149,13 @@
   };
 })(window, "https://app.cal.com/embed/embed.js", "init");
 
-Cal("init", "paid",       { origin: "https://cal.com" });
-Cal("init", "sponsored",  { origin: "https://cal.com" });
+Cal("init", "paid",      { origin: "https://cal.com" });
+Cal("init", "sponsored", { origin: "https://cal.com" });
 
-// Track which types have been initialised
-var calInited = { paid: false, sponsored: false };
-var activeType = null;
+Cal.ns.paid("ui",      { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
+Cal.ns.sponsored("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
 
-// Listen for booking completion on either embed — redirect to the right page
+// After paid booking → Stripe honorarium page
 Cal.ns.paid("on", {
   action: "bookingSuccessful",
   callback: function(e) {
@@ -193,6 +163,8 @@ Cal.ns.paid("on", {
     window.location.href = 'booking-paid-confirm.html' + (uid ? '?uid=' + uid : '');
   }
 });
+
+// After sponsored booking → thank-you confirmation page
 Cal.ns.sponsored("on", {
   action: "bookingSuccessful",
   callback: function(e) {
@@ -200,64 +172,6 @@ Cal.ns.sponsored("on", {
     window.location.href = 'booking-sponsored-confirm.html' + (uid ? '?uid=' + uid : '');
   }
 });
-
-function selectBookingType(type) {
-  activeType = type;
-
-  // Update card aria + active states
-  ['paid', 'sponsored'].forEach(function(t) {
-    var card = document.getElementById('select-' + t);
-    card.setAttribute('aria-pressed', t === type ? 'true' : 'false');
-    card.classList.toggle('active', t === type);
-  });
-
-  // Show calendar section
-  var calSection = document.getElementById('booking-calendar-section');
-  calSection.classList.add('visible');
-
-  // Update label strip
-  var isPaid = type === 'paid';
-  var badge = document.getElementById('booking-cal-badge');
-  var labelText = document.getElementById('booking-cal-label-text');
-  badge.textContent = isPaid ? 'Paid Session' : 'Sponsored';
-  badge.className = 'booking-cal-badge' + (isPaid ? '' : ' badge-sponsored');
-  labelText.textContent = isPaid
-    ? 'You are booking a standard paid session. An honorarium is required after confirmation.'
-    : 'You are booking a sponsored community session. No payment is required.';
-
-  // Show correct embed wrapper, hide the other
-  document.getElementById('cal-wrap-paid').style.display      = isPaid ? 'block' : 'none';
-  document.getElementById('cal-wrap-sponsored').style.display = isPaid ? 'none'  : 'block';
-
-  // Lazy-init the embed on first selection of this type
-  if (!calInited[type]) {
-    calInited[type] = true;
-    var slug = type === 'paid'
-      ? 'al-maqam-al-mahmoud-w8vtkq/event'
-      : 'al-maqam-al-mahmoud-w8vtkq/sponsored-event';
-
-    Cal.ns[type]("inline", {
-      elementOrSelector: "#cal-embed-" + type,
-      calLink: slug,
-      layout: "month_view"
-    });
-    Cal.ns[type]("ui", {
-      theme: "dark",
-      hideEventTypeDetails: false,
-      layout: "month_view"
-    });
-  }
-
-  // Smooth-scroll to the calendar
-  setTimeout(function() {
-    calSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 80);
-}
-
-function scrollToTypeSelector() {
-  var selector = document.getElementById('select-paid');
-  if (selector) selector.closest('section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
 </script>
 
 <!-- ── WHAT TO EXPECT ─────────────────────────── -->
