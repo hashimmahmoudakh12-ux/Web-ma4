@@ -6,6 +6,9 @@
   <meta name="description" content="Al Maqam Al Mahmoud — a premium Islamic nasheed group rooted in authentic tradition, available for masajid, weddings, fundraisers, Eid events, mawlid gatherings, and community programs.">
   <title>Al Maqam Al Mahmoud | المقام المحمود</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/public/images/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.png">
 </head>
 <body>
 
@@ -81,55 +84,10 @@
       </div>
     </div>
 
-    <div class="story-grid">
+    <div class="story-grid story-grid-single">
 
-      <!-- Left: Decorative Art Frame -->
-      <div class="story-art reveal reveal-delay-1" aria-hidden="true">
-        <div class="story-art-inner">
-          <!-- Fanoos (Islamic lantern) with interlocking star lattice -->
-          <svg class="story-art-frame" viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <clipPath id="fanoos-clip">
-                <path d="M80,5 C103,5 134,28 136,66 C138,95 118,106 98,111 C118,116 138,127 136,156 C134,184 103,197 80,197 C57,197 26,184 24,156 C22,127 42,116 62,111 C42,106 22,95 24,66 C26,28 57,5 80,5 Z"/>
-              </clipPath>
-              <pattern id="fanoos-lattice" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <g fill="none" stroke="#D4AF37" stroke-width="0.85">
-                  <polygon points="10,3 11.1,7.3 14.9,5.1 12.7,8.9 17,10 12.7,11.1 14.9,14.9 11.1,12.7 10,17 8.9,12.7 5.1,14.9 7.3,11.1 3,10 7.3,8.9 5.1,5.1 8.9,7.3"/>
-                  <line x1="10" y1="0"  x2="10" y2="3"/>
-                  <line x1="10" y1="17" x2="10" y2="20"/>
-                  <line x1="0"  y1="10" x2="3"  y2="10"/>
-                  <line x1="17" y1="10" x2="20" y2="10"/>
-                  <line x1="14.9" y1="5.1"  x2="20" y2="0"/>
-                  <line x1="14.9" y1="14.9" x2="20" y2="20"/>
-                  <line x1="5.1"  y1="14.9" x2="0"  y2="20"/>
-                  <line x1="5.1"  y1="5.1"  x2="0"  y2="0"/>
-                </g>
-              </pattern>
-            </defs>
-            <!-- Lattice fill clipped to fanoos silhouette -->
-            <g clip-path="url(#fanoos-clip)">
-              <rect width="160" height="200" fill="url(#fanoos-lattice)"/>
-            </g>
-            <!-- Fanoos outer border -->
-            <path d="M80,5 C103,5 134,28 136,66 C138,95 118,106 98,111 C118,116 138,127 136,156 C134,184 103,197 80,197 C57,197 26,184 24,156 C22,127 42,116 62,111 C42,106 22,95 24,66 C26,28 57,5 80,5 Z"
-                  fill="none" stroke="#D4AF37" stroke-width="2.2"/>
-            <!-- Waist accent -->
-            <line x1="62" y1="111" x2="98" y2="111" stroke="#D4AF37" stroke-width="1.5" opacity="0.8"/>
-          </svg>
-
-          <p class="story-art-verse" lang="ar">
-            عَسَىٰ أَن يَبْعَثَكَ رَبُّكَ مَقَامًا مَّحْمُودًا
-          </p>
-          <p class="story-art-translation">
-            "It may be that your Lord will raise you to a praised station."
-            <em>— Al-Isra 17:79</em>
-          </p>
-        </div>
-        <div class="corner-accent" style="position:absolute;inset:0;pointer-events:none;"></div>
-      </div>
-
-      <!-- Right: Story Text -->
-      <div class="story-content reveal reveal-delay-2">
+      <!-- Story Text -->
+      <div class="story-content reveal reveal-delay-1">
         <p class="arabic-quote" lang="ar">
           "وَاذْكُرُوا اللَّهَ كَثِيرًا لَّعَلَّكُمْ تُفْلِحُونَ"
         </p>
@@ -144,7 +102,7 @@
           Our name — The Praised Station — is drawn from the Quran, a reference to the supreme intercession granted to the Beloved of Allah. Every nasheed we perform is an act of love, a vessel of dhikr, and an invitation for listeners to draw closer to their Creator.
         </p>
         <p class="story-body">
-          We perform at masajid, community dinners, mawlid gatherings, Islamic weddings, fundraisers, Eid celebrations, and educational events. Our repertoire spans classical Arabic nasheeds, Swahili devotional poetry, and original compositions — all a cappella, all from the heart.
+          We perform at masajid, community dinners, mawlid gatherings, Islamic weddings, fundraisers, Eid celebrations, and educational events. Our repertoire spans classical Arabic nasheeds and original compositions — all a cappella, all from the heart.
         </p>
 
         <div class="story-tags" role="list" aria-label="Event types">
@@ -158,6 +116,17 @@
       </div>
 
     </div>
+
+    <!-- Group photo -->
+    <div class="story-group-photo reveal" style="margin-top:3.5rem;">
+      <img
+        src="public/images/madinah-photo.jpeg"
+        alt="Members of Al Maqam Al Mahmoud inside the Prophet's Mosque, Madinah"
+        loading="lazy"
+        class="story-group-img"
+      >
+    </div>
+
   </div>
 </section>
 
@@ -212,9 +181,19 @@
           <span class="teacher-tag" role="listitem">Private &amp; Group</span>
         </div>
 
-        <a href="booking.html" class="btn-primary" style="display:inline-block;margin-top:0.5rem;">
-          Book a Lesson
-        </a>
+        <div style="display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;margin-top:0.5rem;">
+          <a href="booking.html" class="btn-primary" style="display:inline-block;">
+            Book a Lesson
+          </a>
+          <a href="https://www.instagram.com/qultivated" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-display);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(212,175,55,0.75);text-decoration:none;transition:color 0.2s;" aria-label="Imam Yaseen on Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4.5"/>
+              <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/>
+            </svg>
+            @qultivated
+          </a>
+        </div>
       </div>
 
     </div>
@@ -271,84 +250,89 @@
   <span class="diamond-sm" style="background:var(--gold);transform:rotate(45deg);width:5px;height:5px;"></span>
 </div>
 
-<!-- ── GALLERY ─────────────────────────────────── -->
-<section class="section section-dark" aria-labelledby="gallery-heading">
-  <div class="geo-pattern" aria-hidden="true"></div>
+<!-- ── SPONSOR ────────────────────────────────── -->
+<section class="section section-mid" aria-labelledby="sponsor-heading">
   <div class="container">
 
     <div class="section-header reveal">
-      <span class="section-eyebrow">Our Presence</span>
-      <h2 class="section-title" id="gallery-heading">Where We Serve</h2>
+      <span class="section-eyebrow">Official Sponsor</span>
+      <h2 class="section-title" id="sponsor-heading">Ihsan Attire</h2>
       <div class="gold-divider" aria-hidden="true">
-        <span class="diamond-sm"></span>
-        <span class="diamond"></span>
-        <span class="diamond-sm"></span>
+        <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
       </div>
     </div>
 
-    <div class="gallery-5" role="list">
+    <div class="sponsor-grid reveal reveal-delay-1">
 
-      <!-- Card 1 -->
-      <article class="gallery-card reveal reveal-delay-1" role="listitem" aria-label="Masajid Events">
-        <div class="geo-pattern-sm" aria-hidden="true"></div>
-        <div class="gallery-card-overlay" aria-hidden="true"></div>
-        <div class="gallery-card-content">
-          <span class="gallery-card-arabic" lang="ar">المساجد</span>
-          <span class="gallery-card-en">Masajid Events</span>
-          <p class="gallery-card-desc">Devotional gatherings, Jumu'ah programs, and Islamic lectures enriched with nasheeds of the heart.</p>
-        </div>
-        <div class="gallery-card-gold-line" aria-hidden="true"></div>
-      </article>
+      <div class="sponsor-photo-wrap">
+        <img
+          src="public/images/talha-ames.jpeg"
+          alt="Talha Ames wearing Ihsan Attire"
+          class="sponsor-photo"
+          loading="lazy"
+        >
+      </div>
 
-      <!-- Card 2 -->
-      <article class="gallery-card reveal reveal-delay-2" role="listitem" aria-label="Mawlid Gatherings">
-        <div class="geo-pattern-sm" aria-hidden="true"></div>
-        <div class="gallery-card-overlay" aria-hidden="true"></div>
-        <div class="gallery-card-content">
-          <span class="gallery-card-arabic" lang="ar">المولد النبوي</span>
-          <span class="gallery-card-en">Mawlid Gatherings</span>
-          <p class="gallery-card-desc">Celebratory evenings in honour of the Best of Creation — songs of love, salawat, and supplication.</p>
+      <div class="sponsor-body">
+        <p style="font-family:var(--font-display);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(212,175,55,0.6);margin-bottom:0.6rem;">Official Sponsor</p>
+        <h3 style="font-family:var(--font-display);font-size:clamp(1.3rem,2vw,1.7rem);letter-spacing:0.04em;color:var(--cream);margin-bottom:1.25rem;">Talha Ames</h3>
+        <p style="font-family:var(--font-serif);font-size:1.05rem;color:var(--cream-muted);line-height:1.85;margin-bottom:1.75rem;">
+          Talha Ames is one of our official duff players and the face behind Ihsan Attire — a brand rooted in Islamic elegance, proudly worn by Al Maqam Al Mahmoud at performances and gatherings.
+        </p>
+        <div style="display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;">
+          <a href="talha-shawls.html" class="btn-outline" style="display:inline-block;">Learn More</a>
+          <a href="https://www.instagram.com/talhaames" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-display);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(212,175,55,0.75);text-decoration:none;transition:color 0.2s;" aria-label="Talha Ames on Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4.5"/>
+              <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/>
+            </svg>
+            @talhaames
+          </a>
         </div>
-        <div class="gallery-card-gold-line" aria-hidden="true"></div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="gallery-card reveal reveal-delay-3" role="listitem" aria-label="Islamic Weddings">
-        <div class="geo-pattern-sm" aria-hidden="true"></div>
-        <div class="gallery-card-overlay" aria-hidden="true"></div>
-        <div class="gallery-card-content">
-          <span class="gallery-card-arabic" lang="ar">الأعراس الإسلامية</span>
-          <span class="gallery-card-en">Islamic Weddings</span>
-          <p class="gallery-card-desc">Pure, joyful nasheeds that sanctify the walimah and fill the blessed occasion with remembrance.</p>
-        </div>
-        <div class="gallery-card-gold-line" aria-hidden="true"></div>
-      </article>
-
-      <!-- Card 4 -->
-      <article class="gallery-card reveal reveal-delay-4" role="listitem" aria-label="Fundraisers">
-        <div class="geo-pattern-sm" aria-hidden="true"></div>
-        <div class="gallery-card-overlay" aria-hidden="true"></div>
-        <div class="gallery-card-content">
-          <span class="gallery-card-arabic" lang="ar">جمع التبرعات</span>
-          <span class="gallery-card-en">Fundraisers</span>
-          <p class="gallery-card-desc">Stirring performances that move hearts to give generously for masjid builds, schools, and charitable causes.</p>
-        </div>
-        <div class="gallery-card-gold-line" aria-hidden="true"></div>
-      </article>
-
-      <!-- Card 5 -->
-      <article class="gallery-card reveal reveal-delay-5" role="listitem" aria-label="Eid Celebrations">
-        <div class="geo-pattern-sm" aria-hidden="true"></div>
-        <div class="gallery-card-overlay" aria-hidden="true"></div>
-        <div class="gallery-card-content">
-          <span class="gallery-card-arabic" lang="ar">أعياد وبرامج المجتمع</span>
-          <span class="gallery-card-en">Eid &amp; Community</span>
-          <p class="gallery-card-desc">From Eid mornings to youth programs — we bring devotional joy to every corner of the Muslim community.</p>
-        </div>
-        <div class="gallery-card-gold-line" aria-hidden="true"></div>
-      </article>
+      </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ── AVAILABILITY CALENDAR ───────────────────── -->
+<section class="section section-mid" aria-labelledby="home-cal-heading">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Availability</span>
+      <h2 class="section-title" id="home-cal-heading">Check a Date</h2>
+      <div class="gold-divider" aria-hidden="true">
+        <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
+      </div>
+      <p class="section-subtitle" style="margin:0 auto 2.5rem;text-align:center;">
+        Browse the calendar below. Select any date to go to our booking page and reserve your time.
+      </p>
+    </div>
+
+    <div class="home-cal reveal reveal-delay-1">
+      <div class="home-cal-corner home-cal-corner-tl" aria-hidden="true"></div>
+      <div class="home-cal-corner home-cal-corner-tr" aria-hidden="true"></div>
+      <div class="home-cal-corner home-cal-corner-bl" aria-hidden="true"></div>
+      <div class="home-cal-corner home-cal-corner-br" aria-hidden="true"></div>
+
+      <div class="home-cal-nav">
+        <button class="home-cal-arrow" id="home-cal-prev" aria-label="Previous month">&#8592;</button>
+        <span class="home-cal-month" id="home-cal-month"></span>
+        <button class="home-cal-arrow" id="home-cal-next" aria-label="Next month">&#8594;</button>
+      </div>
+
+      <div class="home-cal-weekdays" aria-hidden="true">
+        <span>Sun</span><span>Mon</span><span>Tue</span>
+        <span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+
+      <div class="home-cal-days" id="home-cal-days" role="grid" aria-label="Calendar dates"></div>
+
+      <p class="home-cal-hint">Select a date to proceed to booking</p>
+    </div>
+
   </div>
 </section>
 
