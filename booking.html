@@ -50,14 +50,14 @@
     <div class="gold-divider reveal reveal-delay-3" aria-hidden="true" style="margin:1.5rem auto;">
       <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
     </div>
-    <p class="section-subtitle reveal reveal-delay-4" style="margin:0 auto;text-align:center;">
-      Choose a session type below and click to book — we will respond within 48 hours, in sha Allah.
+    <p class="section-subtitle reveal reveal-delay-4" style="margin:0 auto;text-align:center;" id="hero-subtitle">
+      Choose a session type below — we will respond within 48 hours, in sha Allah.
     </p>
   </div>
 </header>
 
-<!-- ── BOOKING OPTIONS ────────────────────────── -->
-<section class="section section-dark" aria-labelledby="booking-options-heading">
+<!-- ── BOOKING OPTIONS (shown when no type selected) ── -->
+<section class="section section-dark" id="section-choose" aria-labelledby="booking-options-heading">
   <div class="geo-pattern-sm" aria-hidden="true"></div>
   <div class="container" style="position:relative;z-index:1;">
 
@@ -68,124 +68,120 @@
         <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
       </div>
       <p class="section-subtitle" style="margin:0 auto;text-align:center;">
-        Click the button on the option that applies to you — a calendar will open to select your date and time.
+        Select which session type applies to you — a live calendar will load so you can pick your date.
       </p>
     </div>
 
     <div class="booking-type-grid" style="max-width:820px;margin:2.5rem auto 0;">
 
-      <!-- ── Paid Session ── -->
-      <div class="booking-option-card reveal reveal-delay-1" aria-label="Paid session booking option">
+      <div class="booking-option-card reveal reveal-delay-1">
         <span class="btc-corner btc-tl" aria-hidden="true"></span>
         <span class="btc-corner btc-br" aria-hidden="true"></span>
         <span class="booking-type-badge">Paid Session</span>
         <h3>Standard Booking</h3>
-        <p>For weddings, mawlids, Eid gatherings, fundraisers, and private events. An honorarium is required to fully confirm your date.</p>
-        <div class="booking-option-meta" aria-label="Paid session details">
+        <p>For weddings, mawlids, Eid gatherings, fundraisers, and private events. An honorarium is required to confirm your date.</p>
+        <div class="booking-option-meta">
           <span>Honorarium Required</span>
           <span>Stripe Payment After Confirmation</span>
         </div>
-        <button class="btn-primary" onclick="showCalendar('paid')" aria-label="Show calendar to book a paid session">
-          Book a Paid Session
-        </button>
+        <a href="booking.html?type=paid" class="btn-primary" style="text-align:center;">Book a Paid Session</a>
       </div>
 
-      <!-- ── Sponsored Event ── -->
-      <div class="booking-option-card reveal reveal-delay-2" aria-label="Sponsored event booking option">
+      <div class="booking-option-card reveal reveal-delay-2">
         <span class="btc-corner btc-tl" aria-hidden="true"></span>
         <span class="btc-corner btc-br" aria-hidden="true"></span>
         <span class="booking-type-badge badge-sponsored">Sponsored</span>
         <h3>Community &amp; Masjid</h3>
         <p>For masajid, Islamic schools, and community organisations. We are honoured to serve on a sponsored basis, subject to availability.</p>
-        <div class="booking-option-meta" aria-label="Sponsored event details">
+        <div class="booking-option-meta">
           <span>No Payment Required</span>
           <span>Subject to Availability</span>
         </div>
-        <button class="btn-outline" onclick="showCalendar('sponsored')" aria-label="Show calendar to book a sponsored event">
-          Book a Sponsored Event
-        </button>
+        <a href="booking.html?type=sponsored" class="btn-outline" style="text-align:center;">Book a Sponsored Event</a>
       </div>
 
     </div>
+  </div>
+</section>
 
-    <!-- ── Inline calendar (revealed on button click) ── -->
-    <div id="cal-section" style="display:none;margin-top:3rem;">
-      <div class="booking-cal-label" aria-live="polite">
-        <span class="booking-cal-badge" id="booking-cal-badge">Paid Session</span>
-        <span class="booking-cal-label-text" id="booking-cal-label-text"></span>
-        <button class="booking-cal-label-change" onclick="document.getElementById('cal-section').style.display='none'" aria-label="Close calendar">
-          Close &#x2715;
-        </button>
+<!-- ── CAL.COM EMBED (shown after type is chosen) ── -->
+<section class="section section-dark" id="section-calendar" style="display:none;" aria-label="Booking calendar">
+  <div class="geo-pattern-sm" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1;">
+
+    <div class="section-header" style="margin-bottom:2rem;">
+      <span class="section-eyebrow" id="cal-eyebrow">Paid Session</span>
+      <h2 class="section-title">Select a Date &amp; Time</h2>
+      <div class="gold-divider" aria-hidden="true" style="margin:1.25rem auto;">
+        <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
       </div>
-      <div class="cal-embed-wrapper">
-        <div id="cal-booking-embed"></div>
-      </div>
+      <p class="section-subtitle" style="margin:0 auto;text-align:center;" id="cal-subtitle"></p>
+    </div>
+
+    <div class="booking-cal-label" style="margin-bottom:2rem;">
+      <span class="booking-cal-badge" id="booking-cal-badge">Paid Session</span>
+      <span class="booking-cal-label-text" id="booking-cal-label-text"></span>
+      <a href="booking.html" class="booking-cal-label-change">&#x2190; Change</a>
+    </div>
+
+    <div class="cal-embed-wrapper">
+      <div id="cal-booking-embed"></div>
     </div>
 
   </div>
 </section>
 
-<!-- Cal.com embed script -->
 <script type="text/javascript">
-(function (C, A, L) {
-  let p = function (a, ar) { a.q.push(ar); };
-  let d = C.document;
-  C.Cal = C.Cal || function () {
-    let cal = C.Cal; let ar = arguments;
-    if (!cal.loaded) {
-      cal.ns = {}; cal.q = cal.q || [];
-      d.head.appendChild(d.createElement("script")).src = A;
-      cal.loaded = true;
-    }
-    if (ar[0] === L) {
-      const api = function () { p(api, arguments); };
-      const namespace = ar[1];
-      api.q = api.q || [];
-      if (typeof namespace === "string") {
-        cal.ns[namespace] = cal.ns[namespace] || api;
-        p(cal.ns[namespace], ar);
-        p(cal, ["-init-", namespace, window]);
-      } else { p(cal, ar); }
-      return;
-    }
-    p(cal, ar);
-  };
-})(window, "https://app.cal.com/embed/embed.js", "init");
+// Read ?type= from URL
+var bookingType = new URLSearchParams(window.location.search).get('type');
 
-Cal("init", { origin: "https://cal.com" });
+if (bookingType === 'paid' || bookingType === 'sponsored') {
+  var isPaid = bookingType === 'paid';
 
-var activeType = null;
+  // Hide type selector, show calendar section
+  document.getElementById('section-choose').style.display   = 'none';
+  document.getElementById('section-calendar').style.display = 'block';
 
-Cal("on", {
-  action: "bookingSuccessful",
-  callback: function(e) {
-    var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
-    var qs  = uid ? '?uid=' + uid : '';
-    window.location.href = activeType === 'paid'
-      ? 'booking-paid-confirm.html' + qs
-      : 'booking-sponsored-confirm.html' + qs;
-  }
-});
-
-function showCalendar(type) {
-  activeType = type;
-  var isPaid = type === 'paid';
-
-  // Update label strip
+  // Update labels
+  document.getElementById('cal-eyebrow').textContent        = isPaid ? 'Paid Session' : 'Sponsored Event';
+  document.getElementById('cal-subtitle').textContent       = isPaid
+    ? 'You are booking a standard paid session. An honorarium payment will be required after confirmation.'
+    : 'You are booking a sponsored community session. No payment is required.';
   var badge = document.getElementById('booking-cal-badge');
   badge.textContent = isPaid ? 'Paid Session' : 'Sponsored';
   badge.className   = 'booking-cal-badge' + (isPaid ? '' : ' badge-sponsored');
   document.getElementById('booking-cal-label-text').textContent = isPaid
-    ? 'You are booking a standard paid session. An honorarium is required after confirmation.'
-    : 'You are booking a sponsored community session. No payment is required.';
+    ? 'Standard booking — honorarium required after confirmation.'
+    : 'Sponsored community session — no payment required.';
 
-  // Reset embed div so Cal.com loads fresh
-  document.getElementById('cal-booking-embed').innerHTML = '';
+  // Init Cal.com
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal; let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {}; cal.q = cal.q || [];
+        d.head.appendChild(d.createElement("script")).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === "string") {
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar);
+          p(cal, ["-init-", namespace, window]);
+        } else { p(cal, ar); }
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
 
-  // Show section
-  document.getElementById('cal-section').style.display = 'block';
+  Cal("init", { origin: "https://cal.com" });
 
-  // Init inline embed with the correct event type
   Cal("inline", {
     elementOrSelector: "#cal-booking-embed",
     calLink: isPaid
@@ -193,12 +189,19 @@ function showCalendar(type) {
       : "al-maqam-al-mahmoud-w8vtkq/sponsored-event",
     layout: "month_view"
   });
+
   Cal("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
 
-  // Scroll to calendar
-  setTimeout(function() {
-    document.getElementById('cal-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 150);
+  Cal("on", {
+    action: "bookingSuccessful",
+    callback: function(e) {
+      var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
+      var qs  = uid ? '?uid=' + uid : '';
+      window.location.href = isPaid
+        ? 'booking-paid-confirm.html' + qs
+        : 'booking-sponsored-confirm.html' + qs;
+    }
+  });
 }
 </script>
 
