@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Book Al Maqam Al Mahmoud for your event — choose a paid session or community-sponsored gathering.">
+  <meta name="description" content="Book Al Maqam Al Mahmoud for your event — check availability and reserve your date.">
   <title>Book Us | Al Maqam Al Mahmoud</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="/favicon.png">
@@ -18,15 +18,12 @@
     <span class="logo-arabic">المقام المحمود</span>
     <span class="logo-english">Al Maqam Al Mahmoud</span>
   </a>
-
   <ul class="nav-links" role="list">
     <li><a href="index.html">Home</a></li>
     <li><a href="booking.html" class="active">Booking</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-
   <a href="booking.html" class="nav-book" aria-label="Book Al Maqam Al Mahmoud">Book Us</a>
-
   <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -56,50 +53,36 @@
   </div>
 </header>
 
-<!-- ════════════════════════════════════════════
-     PAID SESSION
-═════════════════════════════════════════════ -->
-<section class="section section-dark" id="paid-session" aria-labelledby="paid-heading">
+<!-- ── BOOKING SECTION ────────────────────────── -->
+<section class="section section-dark" aria-labelledby="paid-heading">
   <div class="geo-pattern-sm" aria-hidden="true"></div>
   <div class="container" style="position:relative;z-index:1;">
 
-    <div class="section-header reveal">
-      <span class="section-eyebrow">Standard Booking</span>
-      <h2 class="section-title" id="paid-heading">Paid Session</h2>
-      <div class="gold-divider" aria-hidden="true">
-        <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
-      </div>
-      <p class="section-subtitle" style="margin:0 auto 2.5rem;text-align:center;">
-        For weddings, mawlids, Eid gatherings, fundraisers, and private events. An honorarium is required to fully secure your date.
-      </p>
-    </div>
-
-    <div class="booking-cta-card reveal reveal-delay-1">
+    <!-- Info card matching screenshot style -->
+    <div class="bk-info-card reveal">
       <span class="btc-corner btc-tl" aria-hidden="true"></span>
       <span class="btc-corner btc-br" aria-hidden="true"></span>
 
-      <div class="booking-cta-meta">
+      <div class="bk-info-body">
         <span class="booking-type-badge">Paid Session</span>
-        <div class="booking-option-meta" style="margin:1.5rem 0;">
-          <span>For private events, weddings &amp; mawlids</span>
-          <span>Honorarium required to confirm your date</span>
-          <span>Stripe payment collected after booking</span>
-        </div>
+        <h2 class="bk-info-heading" id="paid-heading">Standard Booking</h2>
+        <p class="bk-info-text">
+          Book Al Maqam Al Mahmoud for your event — weddings, mawlids, fundraisers, Eid gatherings, and more. An honorarium is required to confirm your date.
+        </p>
       </div>
 
-      <div class="booking-cta-action">
-        <p style="font-family:var(--font-arabic);font-size:1.8rem;color:var(--gold);margin-bottom:0.5rem;direction:rtl;" lang="ar">بارك الله فيك</p>
-        <p style="font-family:var(--font-serif);font-size:0.95rem;color:var(--cream-muted);line-height:1.75;margin-bottom:1.75rem;">
-          Click below to open the live calendar and select your preferred date and time.
-        </p>
-        <button
-          class="btn-primary"
-          onclick="window.open('https://cal.com/al-maqam-al-mahmoud-w8vtkq/paid-session','_blank','width=900,height=700,noopener,noreferrer')"
-          aria-label="Open Cal.com calendar to book a paid session"
-        >
-          Book Paid Session
-        </button>
+      <div class="bk-info-footer">
+        <span class="bk-info-footer-label">Honorarium Required</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="13 6 19 12 13 18"/>
+        </svg>
       </div>
+    </div>
+
+    <!-- Cal.com inline embed -->
+    <div class="cal-embed-wrapper reveal reveal-delay-1" style="margin-top:2rem;">
+      <div id="cal-paid-embed"></div>
     </div>
 
   </div>
@@ -162,6 +145,51 @@
   document.getElementById('footer-year').textContent = new Date().getFullYear();
 </script>
 
+<!-- Cal.com inline embed -->
+<script type="text/javascript">
+(function (C, A, L) {
+  let p = function (a, ar) { a.q.push(ar); };
+  let d = C.document;
+  C.Cal = C.Cal || function () {
+    let cal = C.Cal; let ar = arguments;
+    if (!cal.loaded) {
+      cal.ns = {}; cal.q = cal.q || [];
+      d.head.appendChild(d.createElement("script")).src = A;
+      cal.loaded = true;
+    }
+    if (ar[0] === L) {
+      const api = function () { p(api, arguments); };
+      const namespace = ar[1];
+      api.q = api.q || [];
+      if (typeof namespace === "string") {
+        cal.ns[namespace] = cal.ns[namespace] || api;
+        p(cal.ns[namespace], ar);
+        p(cal, ["-init-", namespace, window]);
+      } else { p(cal, ar); }
+      return;
+    }
+    p(cal, ar);
+  };
+})(window, "https://app.cal.com/embed/embed.js", "init");
+
+Cal("init", { origin: "https://cal.com" });
+
+Cal("inline", {
+  elementOrSelector: "#cal-paid-embed",
+  calLink: "al-maqam-al-mahmoud-w8vtkq/paid-session",
+  layout: "month_view"
+});
+
+Cal("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
+
+Cal("on", {
+  action: "bookingSuccessful",
+  callback: function (e) {
+    var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
+    window.location.href = 'booking-paid-confirm.html' + (uid ? '?uid=' + uid : '');
+  }
+});
+</script>
 
 </body>
 </html>
