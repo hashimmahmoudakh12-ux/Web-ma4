@@ -48,29 +48,26 @@
       <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
     </div>
     <p class="section-subtitle reveal reveal-delay-4" style="margin:0 auto;text-align:center;">
-      Check availability and book your date — we will be in touch within 48 hours, in sha Allah.
+      Select a session type to check availability and choose your date.
     </p>
   </div>
 </header>
 
-<!-- ── BOOKING SECTION ────────────────────────── -->
-<section class="section section-dark" aria-labelledby="paid-heading">
+<!-- ── SESSION CARDS ──────────────────────────── -->
+<section class="section section-dark" aria-label="Choose a session type">
   <div class="geo-pattern-sm" aria-hidden="true"></div>
   <div class="container" style="position:relative;z-index:1;">
 
-    <!-- Info card matching screenshot style -->
-    <div class="bk-info-card reveal">
+    <a href="booking-paid.html" class="bk-info-card bk-info-card--link reveal">
       <span class="btc-corner btc-tl" aria-hidden="true"></span>
       <span class="btc-corner btc-br" aria-hidden="true"></span>
-
       <div class="bk-info-body">
         <span class="booking-type-badge">Paid Session</span>
-        <h2 class="bk-info-heading" id="paid-heading">Standard Booking</h2>
+        <h2 class="bk-info-heading">Standard Booking</h2>
         <p class="bk-info-text">
           Book Al Maqam Al Mahmoud for your event — weddings, mawlids, fundraisers, Eid gatherings, and more. An honorarium is required to confirm your date.
         </p>
       </div>
-
       <div class="bk-info-footer">
         <span class="bk-info-footer-label">Honorarium Required</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -78,23 +75,11 @@
           <polyline points="13 6 19 12 13 18"/>
         </svg>
       </div>
-    </div>
+    </a>
 
-    <!-- Cal.com inline embed — paid -->
-    <div class="cal-embed-wrapper reveal reveal-delay-1" style="margin-top:2rem;">
-      <div id="cal-paid-embed"></div>
-    </div>
-
-    <!-- Divider -->
-    <div class="gold-divider reveal" aria-hidden="true" style="margin:4rem auto;">
-      <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
-    </div>
-
-    <!-- Sponsored info card -->
-    <div class="bk-info-card reveal">
+    <a href="booking-sponsored.html" class="bk-info-card bk-info-card--link reveal reveal-delay-1" style="margin-top:1.5rem;">
       <span class="btc-corner btc-tl" aria-hidden="true"></span>
       <span class="btc-corner btc-br" aria-hidden="true"></span>
-
       <div class="bk-info-body">
         <span class="booking-type-badge badge-sponsored">Sponsored</span>
         <h2 class="bk-info-heading">Community &amp; Masjid</h2>
@@ -102,7 +87,6 @@
           We are honoured to serve masajid, Islamic schools, and community organisations on a sponsored basis, subject to availability. No payment is required.
         </p>
       </div>
-
       <div class="bk-info-footer">
         <span class="bk-info-footer-label">No Payment Required</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -110,12 +94,7 @@
           <polyline points="13 6 19 12 13 18"/>
         </svg>
       </div>
-    </div>
-
-    <!-- Cal.com inline embed — sponsored -->
-    <div class="cal-embed-wrapper reveal reveal-delay-1" style="margin-top:2rem;">
-      <div id="cal-sponsored-embed"></div>
-    </div>
+    </a>
 
   </div>
 </section>
@@ -123,13 +102,11 @@
 <!-- ── FOOTER ──────────────────────────────────── -->
 <footer class="footer" role="contentinfo">
   <div class="footer-grid">
-
     <div class="footer-brand">
       <span class="logo-arabic" lang="ar">المقام المحمود</span>
       <span class="logo-english">Al Maqam Al Mahmoud</span>
       <p>A premium Islamic nasheed group rooted in the luminous Prophetic tradition — serving masajid, families, and communities with devotion, beauty, and love.</p>
     </div>
-
     <nav aria-label="Footer navigation">
       <p class="footer-heading">Navigation</p>
       <ul class="footer-links" role="list">
@@ -138,7 +115,6 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-
     <div>
       <p class="footer-heading">Connect With Us</p>
       <div class="footer-social">
@@ -163,9 +139,7 @@
         </a>
       </div>
     </div>
-
   </div>
-
   <div class="footer-bottom">
     <p>&copy; <span id="footer-year"></span> Al Maqam Al Mahmoud. All rights reserved.</p>
     <span class="footer-arabic" lang="ar">صلِّ على النبي</span>
@@ -176,66 +150,5 @@
 <script>
   document.getElementById('footer-year').textContent = new Date().getFullYear();
 </script>
-
-<!-- Cal.com inline embed -->
-<script type="text/javascript">
-(function (C, A, L) {
-  let p = function (a, ar) { a.q.push(ar); };
-  let d = C.document;
-  C.Cal = C.Cal || function () {
-    let cal = C.Cal; let ar = arguments;
-    if (!cal.loaded) {
-      cal.ns = {}; cal.q = cal.q || [];
-      d.head.appendChild(d.createElement("script")).src = A;
-      cal.loaded = true;
-    }
-    if (ar[0] === L) {
-      const api = function () { p(api, arguments); };
-      const namespace = ar[1];
-      api.q = api.q || [];
-      if (typeof namespace === "string") {
-        cal.ns[namespace] = cal.ns[namespace] || api;
-        p(cal.ns[namespace], ar);
-        p(cal, ["-init-", namespace, window]);
-      } else { p(cal, ar); }
-      return;
-    }
-    p(cal, ar);
-  };
-})(window, "https://app.cal.com/embed/embed.js", "init");
-
-/* ── Paid session ── */
-Cal("init", "paid", { origin: "https://cal.com" });
-Cal.ns.paid("inline", {
-  elementOrSelector: "#cal-paid-embed",
-  calLink: "al-maqam-al-mahmoud-w8vtkq/paid-session",
-  layout: "month_view"
-});
-Cal.ns.paid("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
-Cal.ns.paid("on", {
-  action: "bookingSuccessful",
-  callback: function (e) {
-    var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
-    window.location.href = 'booking-paid-confirm.html' + (uid ? '?uid=' + uid : '');
-  }
-});
-
-/* ── Sponsored event ── */
-Cal("init", "sponsored", { origin: "https://cal.com" });
-Cal.ns.sponsored("inline", {
-  elementOrSelector: "#cal-sponsored-embed",
-  calLink: "al-maqam-al-mahmoud-w8vtkq/sponsored-event",
-  layout: "month_view"
-});
-Cal.ns.sponsored("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
-Cal.ns.sponsored("on", {
-  action: "bookingSuccessful",
-  callback: function (e) {
-    var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
-    window.location.href = 'booking-sponsored-confirm.html' + (uid ? '?uid=' + uid : '');
-  }
-});
-</script>
-
 </body>
 </html>

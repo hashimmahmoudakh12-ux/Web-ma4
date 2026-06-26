@@ -1431,7 +1431,23 @@ ul { list-style: none; }
   border: 1px solid rgba(212,175,55,0.25);
   position: relative;
   max-width: 560px;
-  margin: 0 auto 0;
+  margin: 0 auto;
+  display: block;
+  text-decoration: none;
+}
+.bk-info-card--link {
+  transition: border-color 0.25s, background 0.22s;
+  cursor: pointer;
+}
+.bk-info-card--link:hover {
+  border-color: rgba(212,175,55,0.6);
+  background: rgba(212,175,55,0.04);
+}
+.bk-info-card--link:hover .bk-info-footer {
+  color: var(--gold);
+}
+.bk-info-card--link:hover .bk-info-footer svg {
+  transform: translateX(4px);
 }
 .bk-info-body {
   padding: 2rem 2rem 1.5rem;
@@ -1457,6 +1473,10 @@ ul { list-style: none; }
   border-top: 1px solid rgba(212,175,55,0.15);
   padding: 0.9rem 2rem;
   color: rgba(212,175,55,0.6);
+  transition: color 0.22s;
+}
+.bk-info-footer svg {
+  transition: transform 0.22s;
 }
 .bk-info-footer-label {
   font-family: var(--font-display);
