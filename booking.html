@@ -94,12 +94,10 @@
         </p>
         <button
           class="btn-primary"
-          data-cal-link="al-maqam-al-mahmoud-w8vtkq/paid-session"
-          data-cal-namespace="paid"
-          data-cal-config='{"layout":"month_view","theme":"dark"}'
-          aria-label="Open calendar to book a paid session"
+          onclick="window.open('https://cal.com/al-maqam-al-mahmoud-w8vtkq/paid-session','_blank','width=900,height=700,noopener,noreferrer')"
+          aria-label="Open Cal.com calendar to book a paid session"
         >
-          Select a Date &amp; Time
+          Book Paid Session
         </button>
       </div>
     </div>
@@ -144,12 +142,10 @@
         </p>
         <button
           class="btn-outline"
-          data-cal-link="al-maqam-al-mahmoud-w8vtkq/sponsored-event"
-          data-cal-namespace="sponsored"
-          data-cal-config='{"layout":"month_view","theme":"dark"}'
-          aria-label="Open calendar to book a sponsored event"
+          onclick="window.open('https://cal.com/al-maqam-al-mahmoud-w8vtkq/sponsored-event','_blank','width=900,height=700,noopener,noreferrer')"
+          aria-label="Open Cal.com calendar to book a sponsored event"
         >
-          Select a Date &amp; Time
+          Book Sponsored Event
         </button>
       </div>
     </div>
@@ -214,55 +210,6 @@
   document.getElementById('footer-year').textContent = new Date().getFullYear();
 </script>
 
-<!-- ── CAL.COM POPUP EMBED ────────────────────── -->
-<script type="text/javascript">
-(function (C, A, L) {
-  let p = function (a, ar) { a.q.push(ar); };
-  let d = C.document;
-  C.Cal = C.Cal || function () {
-    let cal = C.Cal; let ar = arguments;
-    if (!cal.loaded) {
-      cal.ns = {}; cal.q = cal.q || [];
-      d.head.appendChild(d.createElement("script")).src = A;
-      cal.loaded = true;
-    }
-    if (ar[0] === L) {
-      const api = function () { p(api, arguments); };
-      const namespace = ar[1];
-      api.q = api.q || [];
-      if (typeof namespace === "string") {
-        cal.ns[namespace] = cal.ns[namespace] || api;
-        p(cal.ns[namespace], ar);
-        p(cal, ["-init-", namespace, window]);
-      } else { p(cal, ar); }
-      return;
-    }
-    p(cal, ar);
-  };
-})(window, "https://app.cal.com/embed/embed.js", "init");
-
-/* ── Paid session ── */
-Cal("init", "paid", { origin: "https://cal.com" });
-Cal.ns.paid("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
-Cal.ns.paid("on", {
-  action: "bookingSuccessful",
-  callback: function (e) {
-    var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
-    window.location.href = 'booking-paid-confirm.html' + (uid ? '?uid=' + uid : '');
-  }
-});
-
-/* ── Sponsored event ── */
-Cal("init", "sponsored", { origin: "https://cal.com" });
-Cal.ns.sponsored("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
-Cal.ns.sponsored("on", {
-  action: "bookingSuccessful",
-  callback: function (e) {
-    var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
-    window.location.href = 'booking-sponsored-confirm.html' + (uid ? '?uid=' + uid : '');
-  }
-});
-</script>
 
 </body>
 </html>
