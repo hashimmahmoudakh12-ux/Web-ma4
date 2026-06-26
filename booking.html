@@ -51,50 +51,101 @@
       <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
     </div>
     <p class="section-subtitle reveal reveal-delay-4" style="margin:0 auto;text-align:center;">
-      Select an available date on the calendar below, then complete your booking enquiry. We will respond within 48 hours, in sha Allah.
+      Choose a session type below, then select a date — we will respond within 48 hours, in sha Allah.
     </p>
   </div>
 </header>
 
-<!-- ── CAL.COM BOOKING EMBED ─────────────────── -->
-<section class="section section-dark" aria-label="Booking calendar">
+<!-- ── SESSION TYPE SELECTOR ─────────────────── -->
+<section class="section section-dark" aria-labelledby="session-type-heading">
   <div class="geo-pattern-sm" aria-hidden="true"></div>
   <div class="container" style="position:relative;z-index:1;">
 
-    <div class="section-header reveal" style="margin-bottom:2.5rem;">
-      <span class="section-eyebrow">Live Availability</span>
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Step 1</span>
+      <h2 class="section-title" id="session-type-heading">Choose a Session Type</h2>
+      <div class="gold-divider" aria-hidden="true">
+        <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
+      </div>
+      <p class="section-subtitle" style="margin:0 auto;text-align:center;">
+        Select whether you are booking a paid session or a sponsored community session. Both are confirmed through Cal.com.
+      </p>
+    </div>
+
+    <div class="booking-type-grid" role="group" aria-label="Session type selection">
+
+      <!-- Paid Session -->
+      <button
+        class="booking-type-card reveal reveal-delay-1"
+        id="select-paid"
+        onclick="selectBookingType('paid')"
+        aria-pressed="false"
+        aria-label="Select paid session"
+      >
+        <span class="btc-corner btc-tl" aria-hidden="true"></span>
+        <span class="btc-corner btc-br" aria-hidden="true"></span>
+        <span class="booking-type-badge">Paid Session</span>
+        <h3>Standard Booking</h3>
+        <p>Book Al Maqam Al Mahmoud for your event — weddings, mawlids, fundraisers, Eid gatherings, and more. An honorarium is required to confirm your date.</p>
+        <div class="booking-type-footer">
+          <span>Honorarium Required</span>
+          <span class="booking-type-arrow" aria-hidden="true">&#x2192;</span>
+        </div>
+      </button>
+
+      <!-- Sponsored Session -->
+      <button
+        class="booking-type-card reveal reveal-delay-2"
+        id="select-sponsored"
+        onclick="selectBookingType('sponsored')"
+        aria-pressed="false"
+        aria-label="Select sponsored session"
+      >
+        <span class="btc-corner btc-tl" aria-hidden="true"></span>
+        <span class="btc-corner btc-br" aria-hidden="true"></span>
+        <span class="booking-type-badge badge-sponsored">Sponsored</span>
+        <h3>Community &amp; Masjid</h3>
+        <p>We are honoured to serve masajid, Islamic schools, and community organisations on a sponsored basis, subject to availability. No payment is required.</p>
+        <div class="booking-type-footer">
+          <span>No Payment Required</span>
+          <span class="booking-type-arrow" aria-hidden="true">&#x2192;</span>
+        </div>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CAL.COM BOOKING CALENDAR ───────────────── -->
+<section class="section section-dark" id="booking-calendar-section" aria-label="Booking calendar">
+  <div class="geo-pattern-sm" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1;">
+
+    <div class="section-header" style="margin-bottom:2rem;">
+      <span class="section-eyebrow">Step 2</span>
       <h2 class="section-title">Select a Date &amp; Time</h2>
       <div class="gold-divider" aria-hidden="true" style="margin:1.25rem auto;">
         <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
       </div>
-      <p class="section-subtitle" style="margin:0 auto;text-align:center;">
-        Choose an available date and complete your booking directly below — no redirects, no waiting.
-      </p>
     </div>
 
-    <div class="cal-embed-wrapper reveal reveal-delay-1">
-      <!-- Cal.com inline embed — powered by cal.com/al-maqam-al-mahmoud-w8vtkq -->
-      <div id="cal-booking-embed"></div>
+    <!-- Active type label -->
+    <div class="booking-cal-label" id="booking-cal-label" aria-live="polite">
+      <span class="booking-cal-badge" id="booking-cal-badge">Paid Session</span>
+      <span class="booking-cal-label-text" id="booking-cal-label-text">You are booking a standard paid session.</span>
+      <button class="booking-cal-label-change" onclick="scrollToTypeSelector()" aria-label="Change session type">
+        Change &#x2191;
+      </button>
     </div>
 
-    <!-- Honorarium -->
-    <div class="reveal" style="margin-top:3rem;text-align:center;">
-      <div class="gold-divider" aria-hidden="true" style="margin:0 auto 2rem;">
-        <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
-      </div>
-      <p style="font-family:var(--font-display);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(212,175,55,0.55);margin-bottom:0.6rem;">Support Our Work</p>
-      <p style="font-family:var(--font-serif);font-size:1rem;color:var(--cream-muted);margin-bottom:1.5rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.8;">
-        Once your booking is confirmed, you may submit an honorarium as a gesture of gratitude and support — bārakAllāhu fīkum.
-      </p>
-      <a
-        href="https://buy.stripe.com/00wdRacP66hF2krcwy7kc00"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn-primary"
-        aria-label="Pay honorarium via Stripe"
-      >
-        Pay Honorarium
-      </a>
+    <!-- Paid embed -->
+    <div class="cal-embed-wrapper" id="cal-wrap-paid" style="display:none;">
+      <div id="cal-embed-paid"></div>
+    </div>
+
+    <!-- Sponsored embed -->
+    <div class="cal-embed-wrapper" id="cal-wrap-sponsored" style="display:none;">
+      <div id="cal-embed-sponsored"></div>
     </div>
 
   </div>
@@ -127,19 +178,88 @@
   };
 })(window, "https://app.cal.com/embed/embed.js", "init");
 
-Cal("init", { origin: "https://cal.com" });
+Cal("init", "paid",       { origin: "https://cal.com" });
+Cal("init", "sponsored",  { origin: "https://cal.com" });
 
-Cal("inline", {
-  elementOrSelector: "#cal-booking-embed",
-  calLink: "al-maqam-al-mahmoud-w8vtkq",
-  layout: "month_view"
+// Track which types have been initialised
+var calInited = { paid: false, sponsored: false };
+var activeType = null;
+
+// Listen for booking completion on either embed — redirect to the right page
+Cal.ns.paid("on", {
+  action: "bookingSuccessful",
+  callback: function(e) {
+    var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
+    window.location.href = 'booking-paid-confirm.html' + (uid ? '?uid=' + uid : '');
+  }
+});
+Cal.ns.sponsored("on", {
+  action: "bookingSuccessful",
+  callback: function(e) {
+    var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
+    window.location.href = 'booking-sponsored-confirm.html' + (uid ? '?uid=' + uid : '');
+  }
 });
 
-Cal("ui", {
-  theme: "dark",
-  hideEventTypeDetails: false,
-  layout: "month_view"
-});
+function selectBookingType(type) {
+  activeType = type;
+
+  // Update card aria + active states
+  ['paid', 'sponsored'].forEach(function(t) {
+    var card = document.getElementById('select-' + t);
+    card.setAttribute('aria-pressed', t === type ? 'true' : 'false');
+    card.classList.toggle('active', t === type);
+  });
+
+  // Show calendar section
+  var calSection = document.getElementById('booking-calendar-section');
+  calSection.classList.add('visible');
+
+  // Update label strip
+  var isPaid = type === 'paid';
+  var badge = document.getElementById('booking-cal-badge');
+  var labelText = document.getElementById('booking-cal-label-text');
+  badge.textContent = isPaid ? 'Paid Session' : 'Sponsored';
+  badge.className = 'booking-cal-badge' + (isPaid ? '' : ' badge-sponsored');
+  labelText.textContent = isPaid
+    ? 'You are booking a standard paid session. An honorarium is required after confirmation.'
+    : 'You are booking a sponsored community session. No payment is required.';
+
+  // Show correct embed wrapper, hide the other
+  document.getElementById('cal-wrap-paid').style.display      = isPaid ? 'block' : 'none';
+  document.getElementById('cal-wrap-sponsored').style.display = isPaid ? 'none'  : 'block';
+
+  // Lazy-init the embed on first selection of this type
+  if (!calInited[type]) {
+    calInited[type] = true;
+    // IMPORTANT: Replace the slug below with your actual Cal.com event type slug.
+    // Create two event types in Cal.com dashboard, then update these calLink values.
+    var slug = type === 'paid'
+      ? 'al-maqam-al-mahmoud-w8vtkq/paid-session'       // ← replace with your paid event slug
+      : 'al-maqam-al-mahmoud-w8vtkq/sponsored-session'; // ← replace with your sponsored event slug
+
+    Cal.ns[type]("inline", {
+      elementOrSelector: "#cal-embed-" + type,
+      calLink: slug,
+      layout: "month_view"
+    });
+    Cal.ns[type]("ui", {
+      theme: "dark",
+      hideEventTypeDetails: false,
+      layout: "month_view"
+    });
+  }
+
+  // Smooth-scroll to the calendar
+  setTimeout(function() {
+    calSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
+}
+
+function scrollToTypeSelector() {
+  var selector = document.getElementById('select-paid');
+  if (selector) selector.closest('section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 </script>
 
 <!-- ── WHAT TO EXPECT ─────────────────────────── -->
