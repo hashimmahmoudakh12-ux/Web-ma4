@@ -85,13 +85,7 @@
           <span>Honorarium Required</span>
           <span>Stripe Payment After Confirmation</span>
         </div>
-        <button
-          class="btn-primary"
-          data-cal-link="al-maqam-al-mahmoud-w8vtkq/paid-session"
-          data-cal-namespace="paid"
-          data-cal-config='{"layout":"month_view","theme":"dark"}'
-          aria-label="Open calendar to book a paid session"
-        >
+        <button class="btn-primary" onclick="showCalendar('paid')" aria-label="Show calendar to book a paid session">
           Book a Paid Session
         </button>
       </div>
@@ -107,22 +101,32 @@
           <span>No Payment Required</span>
           <span>Subject to Availability</span>
         </div>
-        <button
-          class="btn-outline"
-          data-cal-link="al-maqam-al-mahmoud-w8vtkq/sponsored-event"
-          data-cal-namespace="sponsored"
-          data-cal-config='{"layout":"month_view","theme":"dark"}'
-          aria-label="Open calendar to book a sponsored event"
-        >
+        <button class="btn-outline" onclick="showCalendar('sponsored')" aria-label="Show calendar to book a sponsored event">
           Book a Sponsored Event
         </button>
       </div>
 
     </div>
+
+    <!-- ── Inline calendar (revealed on button click) ── -->
+    <div id="cal-section" style="display:none;margin-top:3rem;">
+      <div class="booking-cal-label" id="booking-cal-label" aria-live="polite">
+        <span class="booking-cal-badge" id="booking-cal-badge">Paid Session</span>
+        <span class="booking-cal-label-text" id="booking-cal-label-text"></span>
+        <button class="booking-cal-label-change" onclick="document.getElementById('cal-section').style.display='none'" aria-label="Close calendar">
+          Close &#x2715;
+        </button>
+      </div>
+      <div class="cal-embed-wrapper">
+        <div id="cal-embed-paid"></div>
+        <div id="cal-embed-sponsored" style="display:none;"></div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- Cal.com popup embed script -->
+<!-- Cal.com inline embed script -->
 <script type="text/javascript">
 (function (C, A, L) {
   let p = function (a, ar) { a.q.push(ar); };
@@ -152,9 +156,6 @@
 Cal("init", "paid",      { origin: "https://cal.com" });
 Cal("init", "sponsored", { origin: "https://cal.com" });
 
-Cal.ns.paid("ui",      { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
-Cal.ns.sponsored("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
-
 // After paid booking → Stripe honorarium page
 Cal.ns.paid("on", {
   action: "bookingSuccessful",
@@ -172,6 +173,48 @@ Cal.ns.sponsored("on", {
     window.location.href = 'booking-sponsored-confirm.html' + (uid ? '?uid=' + uid : '');
   }
 });
+
+var calInited = { paid: false, sponsored: false };
+
+function showCalendar(type) {
+  var isPaid = type === 'paid';
+
+  // Update label strip
+  document.getElementById('booking-cal-badge').textContent = isPaid ? 'Paid Session' : 'Sponsored';
+  document.getElementById('booking-cal-badge').className   = 'booking-cal-badge' + (isPaid ? '' : ' badge-sponsored');
+  document.getElementById('booking-cal-label-text').textContent = isPaid
+    ? 'You are booking a standard paid session. An honorarium is required after confirmation.'
+    : 'You are booking a sponsored community session. No payment is required.';
+
+  // Show correct embed div, hide other
+  document.getElementById('cal-embed-paid').style.display      = isPaid ? 'block' : 'none';
+  document.getElementById('cal-embed-sponsored').style.display = isPaid ? 'none'  : 'block';
+
+  // Show the calendar section
+  document.getElementById('cal-section').style.display = 'block';
+
+  // Lazy-init inline embed on first use
+  if (!calInited[type]) {
+    calInited[type] = true;
+    Cal.ns[type]("inline", {
+      elementOrSelector: "#cal-embed-" + type,
+      calLink: isPaid
+        ? "al-maqam-al-mahmoud-w8vtkq/paid-session"
+        : "al-maqam-al-mahmoud-w8vtkq/sponsored-event",
+      layout: "month_view"
+    });
+    Cal.ns[type]("ui", {
+      theme: "dark",
+      hideEventTypeDetails: false,
+      layout: "month_view"
+    });
+  }
+
+  // Scroll to calendar
+  setTimeout(function() {
+    document.getElementById('cal-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
 </script>
 
 <!-- ── WHAT TO EXPECT ─────────────────────────── -->
