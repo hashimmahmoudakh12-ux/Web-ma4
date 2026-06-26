@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Book Al Maqam Al Mahmoud for your event — check date availability and submit your booking enquiry.">
+  <meta name="description" content="Book Al Maqam Al Mahmoud for your event — choose a paid session or community-sponsored gathering.">
   <title>Book Us | Al Maqam Al Mahmoud</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="/favicon.png">
@@ -50,100 +50,65 @@
     <div class="gold-divider reveal reveal-delay-3" aria-hidden="true" style="margin:1.5rem auto;">
       <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
     </div>
-    <p class="section-subtitle reveal reveal-delay-4" style="margin:0 auto;text-align:center;" id="hero-subtitle">
-      Choose a session type below — we will respond within 48 hours, in sha Allah.
+    <p class="section-subtitle reveal reveal-delay-4" style="margin:0 auto;text-align:center;">
+      Select your session type and choose a date — we will be in touch within 48 hours, in sha Allah.
     </p>
   </div>
 </header>
 
-<!-- ── BOOKING OPTIONS (shown when no type selected) ── -->
-<section class="section section-dark" id="section-choose" aria-labelledby="booking-options-heading">
+<!-- ── SECTION NAV ────────────────────────────── -->
+<div class="booking-section-nav" role="navigation" aria-label="Jump to session type">
+  <a href="#paid-session" class="booking-section-nav-link active">Paid Session</a>
+  <span class="booking-section-nav-divider" aria-hidden="true">&#x25C6;</span>
+  <a href="#sponsored-event" class="booking-section-nav-link">Sponsored Event</a>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAID SESSION
+═════════════════════════════════════════════ -->
+<section class="section section-dark" id="paid-session" aria-labelledby="paid-heading">
   <div class="geo-pattern-sm" aria-hidden="true"></div>
   <div class="container" style="position:relative;z-index:1;">
 
     <div class="section-header reveal">
-      <span class="section-eyebrow">Live Availability</span>
-      <h2 class="section-title" id="booking-options-heading">Select a Session Type</h2>
+      <span class="booking-type-badge">Paid Session</span>
+      <h2 class="section-title" id="paid-heading" style="margin-top:1.25rem;">Standard Booking</h2>
       <div class="gold-divider" aria-hidden="true">
         <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
       </div>
       <p class="section-subtitle" style="margin:0 auto;text-align:center;">
-        Select which session type applies to you — a live calendar will load so you can pick your date.
+        For weddings, mawlids, Eid gatherings, fundraisers, and private events. An honorarium is required after confirmation.
       </p>
     </div>
 
-    <div class="booking-type-grid" style="max-width:820px;margin:2.5rem auto 0;">
-
-      <div class="booking-option-card reveal reveal-delay-1">
-        <span class="btc-corner btc-tl" aria-hidden="true"></span>
-        <span class="btc-corner btc-br" aria-hidden="true"></span>
-        <span class="booking-type-badge">Paid Session</span>
-        <h3>Standard Booking</h3>
-        <p>For weddings, mawlids, Eid gatherings, fundraisers, and private events. An honorarium is required to confirm your date.</p>
-        <div class="booking-option-meta">
-          <span>Honorarium Required</span>
-          <span>Stripe Payment After Confirmation</span>
-        </div>
-        <a href="booking-paid.html" class="btn-primary" style="text-align:center;">Book a Paid Session</a>
-      </div>
-
-      <div class="booking-option-card reveal reveal-delay-2">
-        <span class="btc-corner btc-tl" aria-hidden="true"></span>
-        <span class="btc-corner btc-br" aria-hidden="true"></span>
-        <span class="booking-type-badge badge-sponsored">Sponsored</span>
-        <h3>Community &amp; Masjid</h3>
-        <p>For masajid, Islamic schools, and community organisations. We are honoured to serve on a sponsored basis, subject to availability.</p>
-        <div class="booking-option-meta">
-          <span>No Payment Required</span>
-          <span>Subject to Availability</span>
-        </div>
-        <a href="booking-sponsored.html" class="btn-outline" style="text-align:center;">Book a Sponsored Event</a>
-      </div>
-
+    <div class="cal-embed-wrapper reveal reveal-delay-1" style="margin-top:2.5rem;">
+      <div id="cal-paid-embed"></div>
     </div>
+
   </div>
 </section>
 
-
-<!-- ── WHAT TO EXPECT ─────────────────────────── -->
-<section class="section section-mid" aria-labelledby="expect-heading">
+<!-- ════════════════════════════════════════════
+     SPONSORED EVENT
+═════════════════════════════════════════════ -->
+<section class="section section-mid" id="sponsored-event" aria-labelledby="sponsored-heading">
   <div class="container">
 
     <div class="section-header reveal">
-      <span class="section-eyebrow">The Process</span>
-      <h2 class="section-title" id="expect-heading">What to Expect</h2>
+      <span class="booking-type-badge badge-sponsored">Sponsored</span>
+      <h2 class="section-title" id="sponsored-heading" style="margin-top:1.25rem;">Community &amp; Masjid</h2>
       <div class="gold-divider" aria-hidden="true">
         <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
       </div>
+      <p class="section-subtitle" style="margin:0 auto;text-align:center;">
+        For masajid, Islamic schools, and community organisations. We are honoured to serve on a sponsored basis — no payment required, subject to availability.
+      </p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem;margin-top:1rem;">
-
-      <div class="reveal reveal-delay-1" style="text-align:center;padding:2rem 1.5rem;border:1px solid rgba(212,175,55,0.15);position:relative;">
-        <div style="font-family:var(--font-arabic);font-size:2.2rem;color:var(--gold);margin-bottom:1rem;" lang="ar">١</div>
-        <h3 style="font-family:var(--font-display);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream);margin-bottom:0.75rem;">Select a Date &amp; Time</h3>
-        <p style="font-family:var(--font-serif);font-size:0.95rem;color:var(--cream-muted);line-height:1.7;">Pick an available date and time directly from the booking calendar above and fill in your event details.</p>
-        <div style="position:absolute;top:8px;left:8px;width:16px;height:16px;border-top:1px solid rgba(212,175,55,0.4);border-left:1px solid rgba(212,175,55,0.4);" aria-hidden="true"></div>
-        <div style="position:absolute;bottom:8px;right:8px;width:16px;height:16px;border-bottom:1px solid rgba(212,175,55,0.4);border-right:1px solid rgba(212,175,55,0.4);" aria-hidden="true"></div>
-      </div>
-
-      <div class="reveal reveal-delay-2" style="text-align:center;padding:2rem 1.5rem;border:1px solid rgba(212,175,55,0.15);position:relative;">
-        <div style="font-family:var(--font-arabic);font-size:2.2rem;color:var(--gold);margin-bottom:1rem;" lang="ar">٢</div>
-        <h3 style="font-family:var(--font-display);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream);margin-bottom:0.75rem;">We Respond</h3>
-        <p style="font-family:var(--font-serif);font-size:0.95rem;color:var(--cream-muted);line-height:1.7;">Within 48 hours, in sha Allah, we will confirm availability and discuss the details of your event with you.</p>
-        <div style="position:absolute;top:8px;left:8px;width:16px;height:16px;border-top:1px solid rgba(212,175,55,0.4);border-left:1px solid rgba(212,175,55,0.4);" aria-hidden="true"></div>
-        <div style="position:absolute;bottom:8px;right:8px;width:16px;height:16px;border-bottom:1px solid rgba(212,175,55,0.4);border-right:1px solid rgba(212,175,55,0.4);" aria-hidden="true"></div>
-      </div>
-
-      <div class="reveal reveal-delay-3" style="text-align:center;padding:2rem 1.5rem;border:1px solid rgba(212,175,55,0.15);position:relative;">
-        <div style="font-family:var(--font-arabic);font-size:2.2rem;color:var(--gold);margin-bottom:1rem;" lang="ar">٣</div>
-        <h3 style="font-family:var(--font-display);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream);margin-bottom:0.75rem;">We Serve Your Gathering</h3>
-        <p style="font-family:var(--font-serif);font-size:0.95rem;color:var(--cream-muted);line-height:1.7;">On the day of your event, we arrive prepared to fill your gathering with devotion, beauty, and remembrance.</p>
-        <div style="position:absolute;top:8px;left:8px;width:16px;height:16px;border-top:1px solid rgba(212,175,55,0.4);border-left:1px solid rgba(212,175,55,0.4);" aria-hidden="true"></div>
-        <div style="position:absolute;bottom:8px;right:8px;width:16px;height:16px;border-bottom:1px solid rgba(212,175,55,0.4);border-right:1px solid rgba(212,175,55,0.4);" aria-hidden="true"></div>
-      </div>
-
+    <div class="cal-embed-wrapper reveal reveal-delay-1" style="margin-top:2.5rem;">
+      <div id="cal-sponsored-embed"></div>
     </div>
+
   </div>
 </section>
 
@@ -202,6 +167,79 @@
 <script src="script.js"></script>
 <script>
   document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  // Section nav active state on scroll
+  (function () {
+    var links = document.querySelectorAll('.booking-section-nav-link');
+    var sections = [document.getElementById('paid-session'), document.getElementById('sponsored-event')];
+    function onScroll() {
+      var scrollY = window.scrollY + 120;
+      var active = 0;
+      sections.forEach(function (s, i) { if (s && s.offsetTop <= scrollY) active = i; });
+      links.forEach(function (l, i) { l.classList.toggle('active', i === active); });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>
+
+<!-- ── CAL.COM EMBEDS ──────────────────────────── -->
+<script type="text/javascript">
+(function (C, A, L) {
+  let p = function (a, ar) { a.q.push(ar); };
+  let d = C.document;
+  C.Cal = C.Cal || function () {
+    let cal = C.Cal; let ar = arguments;
+    if (!cal.loaded) {
+      cal.ns = {}; cal.q = cal.q || [];
+      d.head.appendChild(d.createElement("script")).src = A;
+      cal.loaded = true;
+    }
+    if (ar[0] === L) {
+      const api = function () { p(api, arguments); };
+      const namespace = ar[1];
+      api.q = api.q || [];
+      if (typeof namespace === "string") {
+        cal.ns[namespace] = cal.ns[namespace] || api;
+        p(cal.ns[namespace], ar);
+        p(cal, ["-init-", namespace, window]);
+      } else { p(cal, ar); }
+      return;
+    }
+    p(cal, ar);
+  };
+})(window, "https://app.cal.com/embed/embed.js", "init");
+
+/* ── Paid session ── */
+Cal("init", "paid", { origin: "https://cal.com" });
+Cal.ns.paid("inline", {
+  elementOrSelector: "#cal-paid-embed",
+  calLink: "al-maqam-al-mahmoud-w8vtkq/paid-session",
+  layout: "month_view"
+});
+Cal.ns.paid("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
+Cal.ns.paid("on", {
+  action: "bookingSuccessful",
+  callback: function (e) {
+    var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
+    window.location.href = 'booking-paid-confirm.html' + (uid ? '?uid=' + uid : '');
+  }
+});
+
+/* ── Sponsored event ── */
+Cal("init", "sponsored", { origin: "https://cal.com" });
+Cal.ns.sponsored("inline", {
+  elementOrSelector: "#cal-sponsored-embed",
+  calLink: "al-maqam-al-mahmoud-w8vtkq/sponsored-event",
+  layout: "month_view"
+});
+Cal.ns.sponsored("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
+Cal.ns.sponsored("on", {
+  action: "bookingSuccessful",
+  callback: function (e) {
+    var uid = (e.detail && e.detail.data && e.detail.data.uid) ? encodeURIComponent(e.detail.data.uid) : '';
+    window.location.href = 'booking-sponsored-confirm.html' + (uid ? '?uid=' + uid : '');
+  }
+});
 </script>
 
 </body>
