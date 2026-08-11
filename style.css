@@ -1454,7 +1454,8 @@ ul { list-style: none; }
   position: relative;
   max-width: 560px;
   margin: 0 auto;
-  display: block;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
 }
 .bk-info-card--link {
@@ -1472,11 +1473,12 @@ ul { list-style: none; }
   transform: translateX(4px);
 }
 .bk-info-body {
+  flex: 1;
   padding: 2rem 2rem 1.5rem;
 }
 .bk-info-heading {
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.05rem, 3.5vw, 1.75rem);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--cream);
