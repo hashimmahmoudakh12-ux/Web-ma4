@@ -45,6 +45,9 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 ul { list-style: none; }
 
+a:focus-visible,
+button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
 /* ─────────────────────────────────────────────
    ISLAMIC GEOMETRIC PATTERN — 8-pointed star tile
 ───────────────────────────────────────────── */
@@ -403,7 +406,8 @@ ul { list-style: none; }
 ───────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100vh;
+  width: 100%;
+  height: clamp(420px, 55vh, 620px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -411,10 +415,31 @@ ul { list-style: none; }
   background: var(--green-dark);
 }
 
+@media (max-width: 1024px) {
+  .hero { height: clamp(360px, 50vh, 560px); }
+}
+
+@media (max-width: 768px) {
+  .hero { height: clamp(300px, 45vh, 480px); }
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  opacity: 0.22;
+}
+
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 70% at 50% 40%, rgba(14, 74, 55, 0.55) 0%, transparent 70%);
+  background:
+    linear-gradient(to bottom, rgba(7, 31, 23, 0.55) 0%, rgba(7, 31, 23, 0.35) 50%, rgba(7, 31, 23, 0.7) 100%),
+    radial-gradient(ellipse 80% 70% at 50% 40%, rgba(14, 74, 55, 0.45) 0%, transparent 70%);
   z-index: 1;
 }
 
@@ -455,7 +480,7 @@ ul { list-style: none; }
 
 .hero-arabic {
   font-family: var(--font-arabic);
-  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-size: clamp(1.75rem, 7vw, 5.5rem);
   font-weight: 700;
   color: var(--gold-light);
   direction: rtl;
@@ -1432,7 +1457,8 @@ ul { list-style: none; }
   position: relative;
   max-width: 560px;
   margin: 0 auto;
-  display: block;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
 }
 .bk-info-card--link {
@@ -1450,11 +1476,12 @@ ul { list-style: none; }
   transform: translateX(4px);
 }
 .bk-info-body {
+  flex: 1;
   padding: 2rem 2rem 1.5rem;
 }
 .bk-info-heading {
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.05rem, 3.5vw, 1.75rem);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--cream);
@@ -2417,6 +2444,13 @@ ul { list-style: none; }
 @media (max-width: 600px) {
   .section { padding: 4rem 1.25rem; }
   .booking-hero, .contact-hero { padding: 8rem 1.25rem 4rem; }
+
+  /* Hero: allow height to grow so overflow:hidden never clips content */
+  .hero { height: auto; min-height: clamp(300px, 70vh, 480px); }
+  /* Reduce inner padding — 5rem clears the ~60px fixed nav with breathing room */
+  .hero-inner { padding: 5rem 1.25rem 3.5rem; }
+  /* Hide scroll indicator — no room and it overlaps tagline at small heights */
+  .hero-scroll { display: none; }
 
   .hero-ctas { flex-direction: column; align-items: center; }
   .btn-primary, .btn-outline { width: 100%; max-width: 260px; text-align: center; }
