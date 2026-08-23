@@ -3,27 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mawlid — Al Maqam Al Mahmoud</title>
+  <title id="page-title">Lyrics — Al Maqam Al Mahmoud</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
 
   <style>
-    /* ── TOKENS ──────────────────────────────── */
+    /* ── TOKENS ─────────────────────────────── */
     :root {
-      --bg:           #071F17;
-      --bg-card:      #0B2E1E;
-      --gold:         #D4AF37;
-      --gold-light:   #E8C84A;
-      --cream:        #F8F3E7;
-      --cream-body:   #C8BFA8;
-      --cream-muted:  #8A7A6A;
-      --nav-h:        3.5rem;    /* pill nav height */
+      --bg:         #071F17;
+      --bg-card:    #0C2E1F;
+      --gold:       #C9A961;
+      --gold-lt:    #DFBF7A;
+      --cream:      #F5EDD9;
+      --cream-body: #C8BFA8;
+      --cream-dim:  #8A7A6A;
     }
 
     /* ── RESET ───────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
     body {
       background: var(--bg);
       color: var(--cream);
@@ -31,229 +35,9 @@
       line-height: 1.75;
       overflow-x: hidden;
     }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition: none !important; animation: none !important; }
-      html { scroll-behavior: auto; }
-    }
     a { color: inherit; text-decoration: none; }
     a:focus-visible,
     button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-
-    /* ── PAGE HEADER ─────────────────────────── */
-    /* EDIT: group name, event name, date */
-    .page-header {
-      text-align: center;
-      padding: 3rem 1.5rem 2.5rem;
-      border-bottom: 1px solid rgba(212,175,55,0.18);
-    }
-    .page-header .group-name {
-      font-family: 'Amiri', serif;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      color: var(--gold);
-      direction: rtl;
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-    .page-header .event-name {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1rem, 3vw, 1.5rem);
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--cream);
-      display: block;
-      margin-bottom: 0.4rem;
-    }
-    .page-header .event-date {
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      color: var(--cream-muted);
-      font-style: italic;
-    }
-
-    /* ── STICKY SET-LIST NAV ─────────────────── */
-    .setlist-nav-wrap {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(7,31,23,0.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(212,175,55,0.15);
-    }
-    .setlist-nav {
-      display: flex;
-      gap: 0.5rem;
-      overflow-x: auto;
-      padding: 0.6rem 1rem;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      align-items: center;
-    }
-    .setlist-nav::-webkit-scrollbar { display: none; }
-    .setlist-pill {
-      flex-shrink: 0;
-      font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--cream-body);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(212,175,55,0.2);
-      padding: 0.35rem 0.85rem;
-      cursor: pointer;
-      transition: background 0.25s, color 0.25s, border-color 0.25s;
-      white-space: nowrap;
-    }
-    .setlist-pill:hover,
-    .setlist-pill.active {
-      background: rgba(212,175,55,0.15);
-      color: var(--gold-light);
-      border-color: rgba(212,175,55,0.5);
-    }
-
-    /* ── LANG TOGGLE ─────────────────────────── */
-    .lang-toggle-wrap {
-      display: flex;
-      gap: 0.4rem;
-      padding: 0.5rem 1rem;
-      justify-content: flex-end;
-      background: rgba(7,31,23,0.5);
-      border-bottom: 1px solid rgba(212,175,55,0.08);
-    }
-    .lang-btn {
-      font-family: 'Cinzel', serif;
-      font-size: 0.58rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cream-muted);
-      background: none;
-      border: 1px solid rgba(212,175,55,0.18);
-      padding: 0.28rem 0.7rem;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s, background 0.2s;
-    }
-    .lang-btn[aria-pressed="true"],
-    .lang-btn:hover {
-      color: var(--gold-light);
-      border-color: rgba(212,175,55,0.5);
-      background: rgba(212,175,55,0.1);
-    }
-
-    /* ── NASHEED VISIBILITY RULES ─────────────
-       data-lang="" | "all" → all stanzas visible
-       data-lang="ar"       → only .ar visible
-       data-lang="lat"      → only .lat visible
-       data-lang="en"       → only .en visible   */
-    [data-lang="ar"]  .stanza.lat,
-    [data-lang="ar"]  .stanza.en  { display: none; }
-    [data-lang="lat"] .stanza.ar,
-    [data-lang="lat"] .stanza.en  { display: none; }
-    [data-lang="en"]  .stanza.ar,
-    [data-lang="en"]  .stanza.lat { display: none; }
-
-    /* ── NASHEED ARTICLES ────────────────────── */
-    .nasheed-list {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 2.5rem 1.25rem 5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 3.5rem;
-    }
-
-    /* EDIT: add/remove <article> blocks here */
-    article.nasheed {
-      background: var(--bg-card);
-      border: 1px solid rgba(212,175,55,0.14);
-      padding: 2rem 1.75rem;
-      scroll-margin-top: calc(var(--nav-h) * 2.8);
-    }
-
-    .nasheed-header {
-      margin-bottom: 1.75rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid rgba(212,175,55,0.12);
-    }
-    .nasheed-num {
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.7;
-      display: block;
-      margin-bottom: 0.4rem;
-    }
-    .nasheed-title-ar {
-      font-family: 'Amiri', serif;
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      color: var(--gold-light);
-      direction: rtl;
-      line-height: 1.3;
-      display: block;
-      margin-bottom: 0.2rem;
-    }
-    .nasheed-title-en {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
-      font-style: italic;
-      color: var(--cream-muted);
-      display: block;
-    }
-
-    /* ── STANZAS ─────────────────────────────── */
-    .verse-group {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .verse-block {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .verse-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.52rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--cream-muted);
-      opacity: 0.6;
-    }
-
-    /* Arabic stanza */
-    .stanza.ar {
-      font-family: 'Amiri', serif;
-      font-size: clamp(1.2rem, 3.5vw, 1.5rem);
-      direction: rtl;
-      line-height: 2;
-      color: var(--cream);
-    }
-    /* Latin transliteration */
-    .stanza.lat {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1rem, 2.5vw, 1.15rem);
-      font-style: italic;
-      line-height: 1.8;
-      color: var(--cream-body);
-    }
-    /* English meaning */
-    .stanza.en {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.95rem, 2vw, 1.05rem);
-      line-height: 1.7;
-      color: var(--cream-muted);
-    }
-
-    /* divider between verse blocks */
-    .verse-div {
-      border: none;
-      border-top: 1px solid rgba(212,175,55,0.1);
-      margin: 0.25rem 0;
-    }
 
     /* ── BACK LINK ───────────────────────────── */
     .back-link {
@@ -261,316 +45,520 @@
       align-items: center;
       gap: 0.4rem;
       font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--cream-muted);
-      padding: 0.5rem 1rem;
-      border-bottom: 1px solid rgba(212,175,55,0.12);
+      color: var(--cream-dim);
+      padding: 0.6rem 1.25rem;
+      border-bottom: 1px solid rgba(201,169,97,0.1);
+      width: 100%;
       transition: color 0.2s;
     }
-    .back-link:hover { color: var(--gold-light); }
+    .back-link:hover { color: var(--gold-lt); }
+
+    /* ── PAGE HEADER ─────────────────────────── */
+    .page-header {
+      text-align: center;
+      padding: 2.5rem 1.5rem 2rem;
+      border-bottom: 1px solid rgba(201,169,97,0.14);
+    }
+    .hdr-group {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      color: var(--gold);
+      direction: rtl;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .hdr-event {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.88rem, 3vw, 1.25rem);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .hdr-date {
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+      font-style: italic;
+      display: block;
+    }
+
+    /* ── STICKY SET-LIST NAV ─────────────────── */
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7,31,23,0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201,169,97,0.1);
+    }
+    .nav-scroll {
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      padding: 0.55rem 1rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .nav-scroll::-webkit-scrollbar { display: none; }
+    .pill {
+      flex-shrink: 0;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-body);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,169,97,0.16);
+      padding: 0.3rem 0.8rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .pill:hover,
+    .pill.active {
+      background: rgba(201,169,97,0.14);
+      color: var(--gold-lt);
+      border-color: rgba(201,169,97,0.44);
+    }
+
+    /* ── LANGUAGE TOGGLE ─────────────────────── */
+    .lang-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.35rem;
+      padding: 0.42rem 1rem;
+      border-bottom: 1px solid rgba(201,169,97,0.06);
+    }
+    .lang-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      background: none;
+      border: 1px solid rgba(201,169,97,0.15);
+      padding: 0.25rem 0.65rem;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s, border-color 0.2s;
+    }
+    .lang-btn[aria-pressed="true"],
+    .lang-btn:hover {
+      color: var(--gold-lt);
+      border-color: rgba(201,169,97,0.44);
+      background: rgba(201,169,97,0.1);
+    }
+
+    /* ── LANGUAGE VISIBILITY ─────────────────── */
+    [data-lang="ar"]  .line-lat,
+    [data-lang="ar"]  .line-en  { display: none; }
+    [data-lang="lat"] .line-ar,
+    [data-lang="lat"] .line-en  { display: none; }
+    [data-lang="en"]  .line-ar,
+    [data-lang="en"]  .line-lat { display: none; }
+
+    /* ── NASHEED LIST ────────────────────────── */
+    .nasheed-list {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .nasheed {
+      background: var(--bg-card);
+      border: 1px solid rgba(201,169,97,0.12);
+      padding: 2rem 1.75rem;
+      /* keeps article below sticky nav + lang row when jumped to */
+      scroll-margin-top: 7.5rem;
+    }
+
+    .nasheed-head {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(201,169,97,0.1);
+    }
+    .n-num {
+      font-family: 'Cinzel', serif;
+      font-size: 0.56rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.6;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .n-title-lat {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.95rem, 3vw, 1.25rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      display: block;
+    }
+    .n-title-ar {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+      color: var(--gold-lt);
+      direction: rtl;
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    /* ── VERSES ──────────────────────────────── */
+    .verses {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .verse {
+      display: flex;
+      flex-direction: column;
+      gap: 0.12rem;
+    }
+    .line-ar {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+      direction: rtl;
+      text-align: right;
+      line-height: 2;
+      color: var(--cream);
+    }
+    .line-lat {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2.8vw, 1.15rem);
+      font-style: italic;
+      line-height: 1.75;
+      color: var(--cream-body);
+    }
+    .line-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+      line-height: 1.65;
+      color: var(--cream-dim);
+    }
+
+    /* ── EMPTY STATE ─────────────────────────── */
+    .empty-state {
+      max-width: 480px;
+      margin: 5rem auto;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+    .empty-ar {
+      font-family: 'Amiri', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      direction: rtl;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .empty-state p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.08rem;
+      font-style: italic;
+      color: var(--cream-dim);
+      line-height: 1.8;
+    }
 
     /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width: 480px) {
-      article.nasheed { padding: 1.5rem 1rem; }
-      .setlist-nav { gap: 0.35rem; }
+      .nasheed { padding: 1.5rem 1rem; }
     }
   </style>
 </head>
 
-<!-- data-lang controls language visibility; JS toggles it -->
 <body data-lang="all">
 
-<!-- ── BACK LINK ────────────────────────────── -->
 <a href="../../index.html" class="back-link">&#x2190; Back to site</a>
 
-<!-- ── PAGE HEADER ──────────────────────────── -->
-<!-- EDIT: change group name, event name, and date below -->
-<header class="page-header">
-  <span class="group-name" lang="ar">المقام المحمود</span>
-  <span class="event-name">Mawlid — September</span>
-  <!-- EDIT: update date -->
-  <span class="event-date">Saturday, 13 September 2025</span>
-</header>
-
-<!-- ── STICKY SET-LIST NAV ──────────────────── -->
-<!-- EDIT: add a pill per nasheed; href="#nasheed-N" matches each <article id="nasheed-N"> -->
-<div class="setlist-nav-wrap" role="navigation" aria-label="Set list">
-  <div class="setlist-nav" role="list">
-    <!-- EDIT: update text and href for each nasheed -->
-    <a href="#nasheed-1" class="setlist-pill" role="listitem">1. Tala'al Badru</a>
-    <a href="#nasheed-2" class="setlist-pill" role="listitem">2. Ya Nabi Salam</a>
-    <a href="#nasheed-3" class="setlist-pill" role="listitem">3. Qasida Burda</a>
-    <!-- EDIT: copy a pill and paste here for each additional nasheed -->
-  </div>
-</div>
-
-<!-- ── LANGUAGE TOGGLE ───────────────────────── -->
-<div class="lang-toggle-wrap" role="group" aria-label="Language display">
-  <button class="lang-btn" data-lang="all" aria-pressed="true">All</button>
-  <button class="lang-btn" data-lang="ar"  aria-pressed="false" lang="ar">عربي</button>
-  <button class="lang-btn" data-lang="lat" aria-pressed="false">Latin</button>
-  <button class="lang-btn" data-lang="en"  aria-pressed="false">English</button>
-</div>
-
-<!-- ── NASHEED LIST ──────────────────────────── -->
-<main class="nasheed-list" id="main">
-
-  <!-- ══════════════════════════════════════════
-       NASHEED 1 — EDIT EVERYTHING BELOW
-       id="nasheed-N" must match the pill href="#nasheed-N"
-       Add more <div class="verse-block"> for more verses
-       ══════════════════════════════════════════ -->
-  <article class="nasheed" id="nasheed-1">
-    <header class="nasheed-header">
-      <span class="nasheed-num">Nasheed 1</span>
-      <!-- EDIT: Arabic title -->
-      <span class="nasheed-title-ar" lang="ar">طَلَعَ البَدْرُ عَلَيْنَا</span>
-      <!-- EDIT: English title -->
-      <span class="nasheed-title-en">The Full Moon Rose Over Us</span>
-    </header>
-
-    <div class="verse-group">
-
-      <!-- ── VERSE 1 ── -->
-      <div class="verse-block">
-        <span class="verse-label">Verse 1</span>
-
-        <!-- EDIT: Arabic verse -->
-        <p class="stanza ar" lang="ar">
-          طَلَعَ البَدْرُ عَلَيْنَا<br>
-          مِنْ ثَنِيَّاتِ الوَدَاعِ
-        </p>
-
-        <!-- EDIT: Latin transliteration -->
-        <p class="stanza lat">
-          Ṭala'al badru 'alaynā<br>
-          min thaniyyātil wadā'i
-        </p>
-
-        <!-- EDIT: English meaning -->
-        <p class="stanza en">
-          The full moon rose over us<br>
-          from the valleys of farewell
-        </p>
-      </div>
-
-      <hr class="verse-div" aria-hidden="true">
-
-      <!-- ── VERSE 2 ── -->
-      <div class="verse-block">
-        <span class="verse-label">Verse 2</span>
-
-        <p class="stanza ar" lang="ar">
-          وَجَبَ الشُّكْرُ عَلَيْنَا<br>
-          مَا دَعَا لِلَّهِ دَاعِ
-        </p>
-
-        <p class="stanza lat">
-          Wajabash shukru 'alaynā<br>
-          mā da'ā lillāhi dā'i
-        </p>
-
-        <p class="stanza en">
-          Gratitude is incumbent upon us<br>
-          as long as any caller calls to Allah
-        </p>
-      </div>
-
-      <hr class="verse-div" aria-hidden="true">
-
-      <!-- ── CHORUS ── EDIT or remove if not needed -->
-      <div class="verse-block">
-        <span class="verse-label">Chorus</span>
-
-        <p class="stanza ar" lang="ar">
-          أَيُّهَا المَبْعُوثُ فِينَا<br>
-          جِئْتَ بِالأَمْرِ المُطَاعِ
-        </p>
-
-        <p class="stanza lat">
-          Ayyuhal mab'ūthu fīnā<br>
-          ji'ta bil amril muṭā'i
-        </p>
-
-        <p class="stanza en">
-          O you who was sent among us<br>
-          you came with the command to be obeyed
-        </p>
-      </div>
-
-    </div><!-- /verse-group -->
-  </article>
-  <!-- END NASHEED 1 -->
+<div id="root"></div>
 
 
-  <!-- ══════════════════════════════════════════
-       NASHEED 2 — EDIT EVERYTHING BELOW
-       ══════════════════════════════════════════ -->
-  <article class="nasheed" id="nasheed-2">
-    <header class="nasheed-header">
-      <span class="nasheed-num">Nasheed 2</span>
-      <!-- EDIT: Arabic title -->
-      <span class="nasheed-title-ar" lang="ar">يَا نَبِي سَلَامٌ عَلَيْكَ</span>
-      <!-- EDIT: English title -->
-      <span class="nasheed-title-en">O Prophet, Peace Be Upon You</span>
-    </header>
+<!-- ════════════════════════════════════════════════════
+  SET LIST — ONLY EDIT THIS BLOCK
 
-    <div class="verse-group">
+  Quick guide (read on your phone, two minutes):
 
-      <!-- ── VERSE 1 ── -->
-      <div class="verse-block">
-        <span class="verse-label">Verse 1</span>
+  • First two lines set the page header:
+      EVENT: The name of tonight's gathering
+      DATE:  The date
 
-        <!-- EDIT -->
-        <p class="stanza ar" lang="ar">
-          يَا نَبِي سَلَامٌ عَلَيْكَ<br>
-          يَا رَسُول سَلَامٌ عَلَيْكَ
-        </p>
+  • Start each nasheed with a # and its title:
+      # Latin title | عنوان عربي
+    The Arabic part (after |) is optional — leave it out if you like.
 
-        <p class="stanza lat">
-          Yā Nabī salāmun 'alayk<br>
-          Yā Rasūl salāmun 'alayk
-        </p>
+  • Leave a BLANK LINE between verses.
 
-        <p class="stanza en">
-          O Prophet, peace be upon you<br>
-          O Messenger, peace be upon you
-        </p>
-      </div>
+  • Inside each verse, write one line at a time — any order is fine:
+      Lines containing Arabic letters  →  shown in Arabic
+      First non-Arabic line            →  transliteration
+      Second non-Arabic line           →  English meaning
+    Any of the three can be missing from a verse.
 
-      <hr class="verse-div" aria-hidden="true">
+  • Nothing else in this file ever needs to change.
+    Add a nasheed = paste a new # block. Remove one = delete its block.
+════════════════════════════════════════════════════ -->
+<script type="text/plain" id="setlist">
+EVENT: Community Mawlid Night
+DATE: Saturday, 12 September 2026
 
-      <!-- ── VERSE 2 ── EDIT -->
-      <div class="verse-block">
-        <span class="verse-label">Verse 2</span>
+# Tala'a al-Badr | طلع البدر علينا
+طَلَعَ الْبَدْرُ عَلَيْنَا
+Tala'a al-badru 'alayna
+The full moon rose over us
 
-        <p class="stanza ar" lang="ar">
-          يَا حَبِيب سَلَامٌ عَلَيْكَ<br>
-          صَلَوَاتُ اللهِ عَلَيْكَ
-        </p>
+مِنْ ثَنِيَّاتِ الْوَدَاعِ
+Min thaniyyat al-wada'
+From the valley of Wada'
 
-        <p class="stanza lat">
-          Yā Ḥabīb salāmun 'alayk<br>
-          ṣalawātullāhi 'alayk
-        </p>
+وَجَبَ الشُّكْرُ عَلَيْنَا
+Wajaba al-shukru 'alayna
+Gratitude became incumbent upon us
 
-        <p class="stanza en">
-          O Beloved, peace be upon you<br>
-          the blessings of Allah be upon you
-        </p>
-      </div>
+مَا دَعَا لِلَّهِ دَاعِ
+Ma da'a lillahi da'
+As long as any caller calls to Allah
 
-    </div><!-- /verse-group -->
-  </article>
-  <!-- END NASHEED 2 -->
+أَيُّهَا الْمَبْعُوثُ فِينَا
+Ayyuha al-mab'uthu fina
+O you who was sent among us
+
+جِئْتَ بِالْأَمْرِ الْمُطَاعِ
+Ji'ta bil-amri al-muta'
+You came with the command to be obeyed
+
+# Ya Nabi Salam 'Alayk | يا نبي سلام عليك
+يَا نَبِيُّ سَلَامٌ عَلَيْكَ
+Ya Nabiyyu salamun 'alayk
+O Prophet, peace be upon you
+
+يَا رَسُولُ سَلَامٌ عَلَيْكَ
+Ya Rasulu salamun 'alayk
+O Messenger, peace be upon you
+
+يَا حَبِيبُ سَلَامٌ عَلَيْكَ
+Ya Habibu salamun 'alayk
+O Beloved, peace be upon you
+
+صَلَوَاتُ اللهِ عَلَيْكَ
+Salawatullahi 'alayk
+May Allah's blessings be upon you
+</script>
 
 
-  <!-- ══════════════════════════════════════════
-       NASHEED 3 — EDIT EVERYTHING BELOW
-       ══════════════════════════════════════════ -->
-  <article class="nasheed" id="nasheed-3">
-    <header class="nasheed-header">
-      <span class="nasheed-num">Nasheed 3</span>
-      <!-- EDIT: Arabic title -->
-      <span class="nasheed-title-ar" lang="ar">مَوْلَايَ صَلِّ وَسَلِّمْ</span>
-      <!-- EDIT: English title -->
-      <span class="nasheed-title-en">My Lord, Send Blessings and Peace (Qasida Burda)</span>
-    </header>
-
-    <div class="verse-group">
-
-      <!-- ── VERSE 1 ── -->
-      <div class="verse-block">
-        <span class="verse-label">Verse 1</span>
-
-        <!-- EDIT -->
-        <p class="stanza ar" lang="ar">
-          مَوْلَايَ صَلِّ وَسَلِّمْ دَائِمًا أَبَدًا<br>
-          عَلَى حَبِيبِكَ خَيْرِ الخَلْقِ كُلِّهِمِ
-        </p>
-
-        <p class="stanza lat">
-          Mawlāya ṣalli wa sallim dā'iman abadā<br>
-          'alā ḥabībika khayril khalqi kullihimi
-        </p>
-
-        <p class="stanza en">
-          My Lord, bestow Your blessings and peace forever<br>
-          upon Your Beloved, the best of all creation
-        </p>
-      </div>
-
-      <hr class="verse-div" aria-hidden="true">
-
-      <!-- ── VERSE 2 ── EDIT -->
-      <div class="verse-block">
-        <span class="verse-label">Verse 2</span>
-
-        <p class="stanza ar" lang="ar">
-          مُحَمَّدٌ سَيِّدُ الكَوْنَيْنِ وَالثَّقَلَيْنِ<br>
-          وَالفَرِيقَيْنِ مِنْ عُرْبٍ وَمِنْ عَجَمِ
-        </p>
-
-        <p class="stanza lat">
-          Muḥammadun sayyidul kawnayn waththaqalayn<br>
-          walfarīqayni min 'urbin wa min 'ajami
-        </p>
-
-        <p class="stanza en">
-          Muhammad, master of the two worlds and the two weighty things<br>
-          and of the two groups — Arabs and non-Arabs
-        </p>
-      </div>
-
-    </div><!-- /verse-group -->
-  </article>
-  <!-- END NASHEED 3 -->
-
-  <!-- EDIT: copy an entire <article class="nasheed" id="nasheed-N">…</article>
-       block above and paste here to add more nasheeds.
-       Remember to:
-         1. Update id="nasheed-N" with the next number
-         2. Add a matching pill in the set-list nav above  -->
-
-</main><!-- /nasheed-list -->
-
-<!-- ── JS: LANG TOGGLE + SET-LIST ACTIVE ──── -->
 <script>
 (function () {
-  var body = document.body;
-  var langBtns = document.querySelectorAll('.lang-btn');
-  var pills = document.querySelectorAll('.setlist-pill');
+  'use strict';
 
-  /* ── Language toggle ── */
-  langBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
+  /* ── HELPERS ────────────────────────────── */
+  function isArabic(s) {
+    return /[؀-ۿ]/.test(s);
+  }
+
+  function el(tag, props, children) {
+    var node = document.createElement(tag);
+    Object.keys(props || {}).forEach(function (k) {
+      if (k === 'cls')       node.className    = props[k];
+      else if (k === 'text') node.textContent  = props[k];
+      else                   node.setAttribute(k, props[k]);
+    });
+    (children || []).forEach(function (c) { if (c) node.appendChild(c); });
+    return node;
+  }
+
+  /* ── PARSER ─────────────────────────────── */
+  function parse(raw) {
+    var out = { event: '', date: '', nasheeds: [] };
+    var nasheed = null;
+    var buf = [];   // lines accumulating for the current verse
+
+    function flushVerse() {
+      if (!nasheed || buf.length === 0) { buf = []; return; }
+      var verse = { ar: [], lat: [], en: [] };
+      var rest = [];
+      buf.forEach(function (l) {
+        (isArabic(l) ? verse.ar : rest).push(l);
+      });
+      // first non-Arabic → transliteration; everything else → English
+      if (rest.length > 0) verse.lat.push(rest[0]);
+      for (var i = 1; i < rest.length; i++) verse.en.push(rest[i]);
+      nasheed.verses.push(verse);
+      buf = [];
+    }
+
+    raw.split('\n').forEach(function (raw_line) {
+      var line = raw_line.trim();
+      if (!line) {
+        flushVerse();
+      } else if (line.slice(0, 6) === 'EVENT:') {
+        out.event = line.slice(6).trim();
+      } else if (line.slice(0, 5) === 'DATE:') {
+        out.date = line.slice(5).trim();
+      } else if (line.charAt(0) === '#') {
+        flushVerse();
+        var title = line.slice(1).trim();
+        var sep   = title.indexOf('|');
+        nasheed = {
+          lat:    sep >= 0 ? title.slice(0, sep).trim() : title,
+          ar:     sep >= 0 ? title.slice(sep + 1).trim() : '',
+          verses: []
+        };
+        out.nasheeds.push(nasheed);
+      } else {
+        // line belongs to the current verse; if there's no current nasheed,
+        // ignore gracefully rather than throwing
+        if (nasheed) buf.push(line);
+      }
+    });
+    flushVerse();
+    return out;
+  }
+
+  /* ── RENDERER ───────────────────────────── */
+  function render(data) {
+    var root = document.getElementById('root');
+
+    /* Page header */
+    root.appendChild(
+      el('header', { cls: 'page-header' }, [
+        el('span', { cls: 'hdr-group', lang: 'ar', text: 'المقام المحمود' }),
+        el('span', { cls: 'hdr-event', text: data.event || 'Al Maqam Al Mahmoud' }),
+        data.date ? el('span', { cls: 'hdr-date', text: data.date }) : null
+      ])
+    );
+
+    /* Update browser tab title */
+    if (data.event) {
+      document.getElementById('page-title').textContent =
+        data.event + ' — Al Maqam Al Mahmoud';
+    }
+
+    /* Empty state */
+    if (data.nasheeds.length === 0) {
+      root.appendChild(
+        el('div', { cls: 'empty-state' }, [
+          el('span', { cls: 'empty-ar', lang: 'ar',
+            text: 'بارك الله فيكم' }),
+          el(‘p’, { text: ‘The set list for tonight’s gathering is being prepared — may Allah bless the occasion.’ })
+        ])
+      );
+      return;
+    }
+
+    /* Sticky set-list nav */
+    var navWrap  = el('div', { cls: 'nav-wrap' });
+    var navScroll = el('nav', { cls: 'nav-scroll', 'aria-label': 'Set list' });
+    data.nasheeds.forEach(function (n, i) {
+      navScroll.appendChild(
+        el('a', { cls: 'pill', href: '#nasheed-' + (i + 1),
+          text: (i + 1) + '. ' + n.lat })
+      );
+    });
+    navWrap.appendChild(navScroll);
+    root.appendChild(navWrap);
+
+    /* Language toggle */
+    var langRow = el('div', { cls: 'lang-row', role: 'group', 'aria-label': 'Language' });
+    [['all','All'],['ar','عربي'],['lat','Latin'],['en','English']]
+      .forEach(function (pair) {
+        langRow.appendChild(
+          el('button', {
+            cls: 'lang-btn',
+            'data-lang': pair[0],
+            'aria-pressed': pair[0] === 'all' ? 'true' : 'false',
+            text: pair[1]
+          })
+        );
+      });
+    root.appendChild(langRow);
+
+    /* Nasheeds */
+    var list = el('main', { cls: 'nasheed-list', id: 'main' });
+    data.nasheeds.forEach(function (n, i) {
+      var article = el('article', {
+        cls: 'nasheed',
+        id:  'nasheed-' + (i + 1)
+      }, [
+        el('header', { cls: 'nasheed-head' }, [
+          el('span', { cls: 'n-num',
+            text: 'Nasheed ' + String(i + 1).padStart(2, '0') }),
+          el('span', { cls: 'n-title-lat', text: n.lat }),
+          n.ar ? el('span', { cls: 'n-title-ar', lang: 'ar', text: n.ar }) : null
+        ])
+      ]);
+
+      var verses = el('div', { cls: 'verses' });
+      n.verses.forEach(function (v) {
+        var verse = el('div', { cls: 'verse' });
+        v.ar.forEach(function (t) {
+          verse.appendChild(el('p', { cls: 'line-ar', lang: 'ar', dir: 'rtl', text: t }));
+        });
+        v.lat.forEach(function (t) {
+          verse.appendChild(el('p', { cls: 'line-lat', text: t }));
+        });
+        v.en.forEach(function (t) {
+          verse.appendChild(el('p', { cls: 'line-en', text: t }));
+        });
+        verses.appendChild(verse);
+      });
+      article.appendChild(verses);
+      list.appendChild(article);
+    });
+    root.appendChild(list);
+  }
+
+  /* ── LANG TOGGLE ────────────────────────── */
+  function initLang() {
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('.lang-btn');
+      if (!btn) return;
       var lang = btn.getAttribute('data-lang');
-      body.setAttribute('data-lang', lang);
-      langBtns.forEach(function (b) {
+      document.body.setAttribute('data-lang', lang);
+      document.querySelectorAll('.lang-btn').forEach(function (b) {
         b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
       });
     });
-  });
+  }
 
-  /* ── Set-list active pill (IntersectionObserver) ── */
-  if (!('IntersectionObserver' in window)) return;
-
-  var articles = document.querySelectorAll('article.nasheed');
-  var obs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
+  /* ── ACTIVE PILL ON SCROLL ──────────────── */
+  function initActivePill() {
+    if (!('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
         var id = entry.target.id;
-        pills.forEach(function (p) {
-          var active = p.getAttribute('href') === '#' + id;
-          p.classList.toggle('active', active);
+        document.querySelectorAll('.pill').forEach(function (p) {
+          p.classList.toggle('active', p.getAttribute('href') === '#' + id);
         });
-      }
-    });
-  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+      });
+    }, { rootMargin: '-20% 0px -72% 0px' });
+    document.querySelectorAll('.nasheed').forEach(function (a) { obs.observe(a); });
+  }
 
-  articles.forEach(function (a) { obs.observe(a); });
+  /* ── BOOT ───────────────────────────────── */
+  try {
+    var raw  = (document.getElementById('setlist') || {}).textContent || '';
+    var data = parse(raw);
+    render(data);
+    initLang();
+    initActivePill();
+  } catch (err) {
+    document.getElementById('root').innerHTML =
+      '<div class="empty-state">'
+      + '<span class="empty-ar" lang="ar">بارك الله فيكم</span>'
+      + ‘<p>The set list for tonight’s gathering is being prepared — may Allah bless the occasion.</p>’
+      + '</div>';
+  }
 })();
 </script>
 
