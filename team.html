@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Book a Quran lesson with Imam Yaseen — select a date and time for your session.">
-  <title>Quran Lessons | Al Maqam Al Mahmoud</title>
+  <meta name="description" content="Meet the team behind Al Maqam Al Mahmoud — the musicians, performers, and creatives who bring the tradition to life.">
+  <title>Our Team | Al Maqam Al Mahmoud</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/public/images/favicon.svg">
@@ -18,15 +18,18 @@
     <span class="logo-arabic">المقام المحمود</span>
     <span class="logo-english">Al Maqam Al Mahmoud</span>
   </a>
+
   <ul class="nav-links" role="list">
     <li><a href="index.html">Home</a></li>
-    <li><a href="booking.html" class="active">Booking</a></li>
+    <li><a href="booking.html">Booking</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="lyrics/mawlid-sept/">Lyrics</a></li>
     <li><a href="promoters.html">Promoters</a></li>
-    <li><a href="team.html">Team</a></li>
+    <li><a href="team.html" class="active">Team</a></li>
   </ul>
+
   <a href="booking.html" class="nav-book" aria-label="Book Al Maqam Al Mahmoud">Book Us</a>
+
   <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -44,34 +47,62 @@
 </div>
 
 <!-- ── PAGE HERO ──────────────────────────────── -->
-<header class="booking-hero" aria-label="Quran lessons booking header">
+<header class="booking-hero" aria-label="Team page header">
   <div class="geo-pattern" aria-hidden="true"></div>
   <div class="container" style="position:relative;z-index:1;text-align:center;">
-    <span class="section-eyebrow reveal">Quran Lessons</span>
-    <span class="page-hero-arabic reveal reveal-delay-1" lang="ar">تعلّم القرآن</span>
-    <h1 class="section-title reveal reveal-delay-2" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1.25rem;">With Imam Yaseen</h1>
+    <span class="section-eyebrow reveal">Behind the Sound</span>
+    <span class="page-hero-arabic reveal reveal-delay-1" lang="ar">فريقنا</span>
+    <h1 class="section-title reveal reveal-delay-2" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1.25rem;">Our Team</h1>
     <div class="gold-divider reveal reveal-delay-3" aria-hidden="true" style="margin:1.5rem auto;">
       <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
     </div>
     <p class="section-subtitle reveal reveal-delay-4" style="margin:0 auto;text-align:center;">
-      Select a date and time for your Quran lesson — suitable for all levels.
+      The dedicated individuals who give their time, talent, and hearts to Al Maqam Al Mahmoud.
     </p>
   </div>
 </header>
 
-<!-- ── CALENDAR ───────────────────────────────── -->
-<section class="section section-dark" aria-label="Quran lesson booking calendar">
+<!-- ── TEAM MEMBERS ───────────────────────────── -->
+<section class="section section-dark" aria-labelledby="team-heading">
   <div class="geo-pattern-sm" aria-hidden="true"></div>
   <div class="container" style="position:relative;z-index:1;">
 
-    <div class="booking-cal-label" style="margin-bottom:2rem;">
-      <span class="booking-cal-badge">Quran Lessons</span>
-      <span class="booking-cal-label-text">One-to-one session with Imam Yaseen.</span>
-      <a href="booking.html" class="booking-cal-label-change">&#x2190; Back</a>
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Members</span>
+      <h2 class="section-title" id="team-heading">Meet the Team</h2>
+      <div class="gold-divider" aria-hidden="true">
+        <span class="diamond-sm"></span><span class="diamond"></span><span class="diamond-sm"></span>
+      </div>
     </div>
 
-    <div class="cal-embed-wrapper">
-      <div id="cal-quran-embed"></div>
+    <!-- ── LUKE ───────────────────────────────── -->
+    <div class="teacher-grid reveal reveal-delay-1" style="margin-bottom:5rem;">
+
+      <div class="teacher-image-wrap">
+        <img
+          class="teacher-photo"
+          src="public/images/luke.jpeg"
+          alt="Luke, Videographer and Percussionist at Al Maqam Al Mahmoud"
+          loading="eager"
+          width="340"
+        >
+      </div>
+
+      <div class="teacher-body">
+        <p class="teacher-name" style="font-family:var(--font-display);font-size:clamp(1.4rem,2vw,1.9rem);letter-spacing:0.05em;">Luke</p>
+        <p class="teacher-title">Videographer &amp; Percussionist</p>
+
+        <p class="section-subtitle" style="margin:0 0 1.75rem;text-align:left;">
+          Luke brings a dual gift to Al Maqam Al Mahmoud — both in front of the camera and behind it. As a percussionist he contributes to the heartbeat of every performance, and as the group's videographer he captures those moments for the world to see.
+        </p>
+
+        <div class="teacher-tags" role="list" aria-label="Roles">
+          <span class="teacher-tag" role="listitem">Percussionist</span>
+          <span class="teacher-tag" role="listitem">Videographer</span>
+          <span class="teacher-tag" role="listitem">Official Member</span>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -80,19 +111,23 @@
 <!-- ── FOOTER ──────────────────────────────────── -->
 <footer class="footer" role="contentinfo">
   <div class="footer-grid">
+
     <div class="footer-brand">
       <span class="logo-arabic" lang="ar">المقام المحمود</span>
       <span class="logo-english">Al Maqam Al Mahmoud</span>
       <p>A premium Islamic nasheed group rooted in the luminous Prophetic tradition — serving masajid, families, and communities with devotion, beauty, and love.</p>
     </div>
+
     <nav aria-label="Footer navigation">
       <p class="footer-heading">Navigation</p>
       <ul class="footer-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="booking.html">Booking</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="team.html">Team</a></li>
       </ul>
     </nav>
+
     <div>
       <p class="footer-heading">Connect With Us</p>
       <div class="footer-social">
@@ -117,7 +152,9 @@
         </a>
       </div>
     </div>
+
   </div>
+
   <div class="footer-bottom">
     <p>&copy; <span id="footer-year"></span> Al Maqam Al Mahmoud. All rights reserved.</p>
     <span class="footer-arabic" lang="ar">صلِّ على النبي</span>
@@ -128,44 +165,5 @@
 <script>
   document.getElementById('footer-year').textContent = new Date().getFullYear();
 </script>
-
-<!-- Cal.com inline embed -->
-<script type="text/javascript">
-(function (C, A, L) {
-  let p = function (a, ar) { a.q.push(ar); };
-  let d = C.document;
-  C.Cal = C.Cal || function () {
-    let cal = C.Cal; let ar = arguments;
-    if (!cal.loaded) {
-      cal.ns = {}; cal.q = cal.q || [];
-      d.head.appendChild(d.createElement("script")).src = A;
-      cal.loaded = true;
-    }
-    if (ar[0] === L) {
-      const api = function () { p(api, arguments); };
-      const namespace = ar[1];
-      api.q = api.q || [];
-      if (typeof namespace === "string") {
-        cal.ns[namespace] = cal.ns[namespace] || api;
-        p(cal.ns[namespace], ar);
-        p(cal, ["-init-", namespace, window]);
-      } else { p(cal, ar); }
-      return;
-    }
-    p(cal, ar);
-  };
-})(window, "https://app.cal.com/embed/embed.js", "init");
-
-Cal("init", { origin: "https://cal.com" });
-
-Cal("inline", {
-  elementOrSelector: "#cal-quran-embed",
-  calLink: "al-maqam-al-mahmoud-w8vtkq/quran-lessons",
-  layout: "month_view"
-});
-
-Cal("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
-</script>
-
 </body>
 </html>
